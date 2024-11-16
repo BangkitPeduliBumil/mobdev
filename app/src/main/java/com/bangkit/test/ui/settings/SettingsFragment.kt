@@ -19,7 +19,6 @@ class SettingsFragment : Fragment() {
 
     // Properti binding untuk mengakses UI
     private val binding get() = _binding!!
-    //change
 
     override fun onCreateView(
         inflater: LayoutInflater,
