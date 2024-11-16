@@ -17,4 +17,9 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_settings">Settings</string>
     <string name="logout">Logout</string>
+    <string name="title_news">News</string>
+    <string name="thumbnail">Thumbnail</string>
+    <string name="title_placeholder">Judul Artikel</string>
+    <string name="source_placeholder">Sumber Artikel</string>
+    <string name="date_placeholder">Tanggal</string>
 </resources>

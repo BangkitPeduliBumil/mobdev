@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.bangkit.test.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_article"
+        android:name="com.bangkit.test.ui.article.ArticleFragment"
+        android:label="@string/title_article"
+        tools:layout="@layout/fragment_article" />
 
     <fragment
         android:id="@+id/navigation_settings"
