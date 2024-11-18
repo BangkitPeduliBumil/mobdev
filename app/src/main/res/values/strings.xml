@@ -22,4 +22,10 @@
     <string name="title_placeholder">Judul Artikel</string>
     <string name="source_placeholder">Sumber Artikel</string>
     <string name="date_placeholder">Tanggal</string>
+    <string name="hi_username">HI ! Username</string>
+    <string name="usia_kehamilan">Usia Kehamilan</string>
+    <string name="resiko_kehamilan">Resiko Kehamilan</string>
+    <string name="tekanan_darah">Tekanan Darah</string>
+    <string name="tidak_normal">Tidak Normal</string>
+    <string name="gula_darah">Gula Darah</string>
 </resources>
