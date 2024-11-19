@@ -32,11 +32,6 @@ class SettingsFragment : Fragment() {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        // Observasi teks dari ViewModel
-        settingsViewModel.text.observe(viewLifecycleOwner) {
-            binding.textNotifications.text = it
-        }
-
         // Mengatur tombol logout
         binding.btnLogout.setOnClickListener {
             // Proses logout dengan Firebase
