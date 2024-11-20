@@ -75,5 +75,4 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     implementation("com.github.1902shubh:SendMail:1.0.0")
-
 }
