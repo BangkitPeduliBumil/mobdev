@@ -16,21 +16,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Menggunakan View Binding untuk mengakses elemen UI
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Menghubungkan BottomNavigationView dengan NavController
         val navView: BottomNavigationView = binding.navView
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
 
-        // Menentukan fragment utama sebagai top-level destinations
+        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home,
-                R.id.navigation_article,
-                R.id.navigation_settings,
-                R.id.navigation_chatbot
+                R.id.navigation_home, R.id.navigation_article, R.id.navigation_settings, R.id.navigation_chatbot
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
