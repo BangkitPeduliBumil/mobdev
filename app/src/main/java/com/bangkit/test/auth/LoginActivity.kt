@@ -15,8 +15,6 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-//testing
-
 class LoginActivity : AppCompatActivity() {
     private lateinit var btnSignup: TextView
     private lateinit var btnLogin: Button
