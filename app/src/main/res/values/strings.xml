@@ -2,7 +2,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="app_name">Peduli Bumil</string>
+    <string name="app_name">PEDULI BUMIL</string>
     <string name="hint_email">Email</string>
     <string name="hint_name">Nama</string>
     <string name="hint_password">Kata Sandi</string>
@@ -29,5 +29,4 @@
     <string name="tidak_normal">Tidak Normal</string>
     <string name="gula_darah">Gula Darah</string>
     <string name="usia">Umur</string>
-    <string name="textsplash">PEDULI BUMIL</string>
 </resources>

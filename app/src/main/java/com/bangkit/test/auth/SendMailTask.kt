@@ -19,11 +19,13 @@ class SendMailTask(
 ) : AsyncTask<Void, Void, Void>() {
 
     override fun doInBackground(vararg params: Void?): Void? {
-        val props = Properties()
-        props["mail.smtp.host"] = "smtp.gmail.com"
-        props["mail.smtp.port"] = "587"
-        props["mail.smtp.auth"] = "true"
-        props["mail.smtp.starttls.enable"] = "true"
+        val props = Properties().apply {
+            put("mail.smtp.host", "smtp.gmail.com")
+            put("mail.smtp.port", "587")
+            put("mail.smtp.auth", "true")
+            put("mail.smtp.starttls.enable", "true")
+            put("mail.smtp.ssl.protocols", "TLSv1.2") // Tambahkan untuk memastikan TLS modern digunakan
+        }
 
         val session = Session.getInstance(props, object : Authenticator() {
             override fun getPasswordAuthentication(): PasswordAuthentication {
@@ -32,11 +34,12 @@ class SendMailTask(
         })
 
         try {
-            val mimeMessage = MimeMessage(session)
-            mimeMessage.setFrom(InternetAddress(senderEmail))
-            mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail))
-            mimeMessage.subject = subject
-            mimeMessage.setText(message)
+            val mimeMessage = MimeMessage(session).apply {
+                setFrom(InternetAddress(senderEmail))
+                setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail))
+                subject = this@SendMailTask.subject
+                setText(this@SendMailTask.message)
+            }
             Transport.send(mimeMessage)
         } catch (e: Exception) {
             e.printStackTrace()

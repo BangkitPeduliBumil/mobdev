@@ -58,7 +58,7 @@ class OtpActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         val intent = Intent(this, IdentityActivity::class.java)
                         startActivity(intent)
-                        finish() // Tutup aktivitas ini
+                        finish()
                     } else {
                         Toast.makeText(this, "Error: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                     }
@@ -81,7 +81,13 @@ class OtpActivity : AppCompatActivity() {
         val message = "Kode OTP Anda adalah $otpCode. Jangan bagikan kode ini kepada siapapun!"
 
         // Gunakan utilitas pengiriman email
-        SendMailTask("otpverif039@gmail.com", "ozpsyulerzjekfrz", email, subject, message).execute()
+        SendMailTask(
+            "otpverif039@gmail.com", // Pastikan ini email pengirim yang valid
+            "ozpsyulerzjekfrz",      // Gunakan password aplikasi Gmail
+            email,
+            subject,
+            message
+        ).execute()
     }
 
     // Setup input OTP

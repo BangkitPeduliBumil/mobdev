@@ -84,7 +84,7 @@
             android:layout_marginTop="10dp"
 
             android:text="@string/resiko_kehamilan"
-            android:textColor="#FF80B2"
+            android:textColor="@color/pink_pastel"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"

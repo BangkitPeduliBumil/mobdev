@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teman Bumil</title>
+    <!-- Dialogflow Messenger Stylesheet -->
+    <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
+</head>
+<body>
+<!-- Dialogflow Messenger Script -->
+<script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
+
+<!-- Dialogflow Messenger Component -->
+<df-messenger
+        project-id="pedulibumil-2792a"
+        agent-id="a56ecfa2-60ce-4a8f-895f-e6e7867db066"
+        language-code="id"
+        max-query-length="-1">
+    <df-messenger-chat-bubble chat-title="Teman Bumil">
+    </df-messenger-chat-bubble>
+</df-messenger>
+
+<!-- Custom Styles -->
+<style>
+    df-messenger {
+        z-index: 999;
+        position: fixed;
+        --df-messenger-font-color: #000;
+        --df-messenger-font-family: 'Google Sans', sans-serif;
+        --df-messenger-chat-background: #f3f6fc;
+        --df-messenger-message-user-background: #d3e3fd;
+        --df-messenger-message-bot-background: #fff;
+        bottom: 16px;
+        right: 16px;
+    }
+</style>
+</body>
+</html>
