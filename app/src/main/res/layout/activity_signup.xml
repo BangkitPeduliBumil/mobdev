@@ -24,10 +24,10 @@
 <!--    &lt;!&ndash; Profile Icon &ndash;&gt;-->
     <ImageView
         android:id="@+id/imgProfileIcon"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="279dp"
+        android:layout_height="237dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/ic_person"
+        android:src="@drawable/login_banner_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvAppNamee" />
