@@ -73,12 +73,10 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        // Tombol Login dengan Google
         btnGoogleLogin.setOnClickListener {
             signInWithGoogle()
         }
 
-        // Tombol Daftar
         btnSignup.setOnClickListener {
             val intent = Intent(this, SignupActivity::class.java)
             startActivity(intent)
