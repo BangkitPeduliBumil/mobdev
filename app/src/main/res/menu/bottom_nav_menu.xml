@@ -16,8 +16,4 @@
         android:icon="@drawable/ic_settings"
         android:title="@string/title_settings" />
 
-    <item
-        android:id="@+id/navigation_chatbot"
-        android:icon="@drawable/ic_email"
-        android:title="@string/title_chatbot" />
 </menu>

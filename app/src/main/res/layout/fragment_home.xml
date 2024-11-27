@@ -8,12 +8,12 @@
     tools:context=".ui.home.HomeFragment" >
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/ivLogo"
         android:layout_width="75dp"
         android:layout_height="67dp"
         android:layout_marginLeft="300dp"
         android:layout_marginTop="25dp"
-        android:src="@drawable/profile"
+        android:src="@drawable/login_banner_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,18 +28,18 @@
         android:textColor="#FFFFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/ivLogo"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/tvUmur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/usia"
         android:textColor="@color/gray"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/ivLogo"
         app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
     <TextView
@@ -56,7 +56,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/tvResiko"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -69,13 +69,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tvKandungan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/usia_kehamilan"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintEnd_toStartOf="@+id/ivLogo"
+        app:layout_constraintTop_toBottomOf="@+id/tvUmur" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
@@ -86,7 +86,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        app:layout_constraintTop_toBottomOf="@+id/ivLogo">
 
 
         <TableLayout
@@ -113,7 +113,7 @@
                         android:background="@drawable/bg_button_risk">
 
                         <ImageView
-                            android:id="@+id/imageView3"
+                            android:id="@+id/bgTB"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_margin="8dp"
@@ -124,18 +124,18 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
-                            android:id="@+id/imageView4"
+                            android:id="@+id/ivTB"
                             android:layout_width="49dp"
                             android:layout_height="47dp"
                             android:src="@drawable/ic_height"
-                            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-                            app:layout_constraintEnd_toEndOf="@+id/imageView3"
-                            app:layout_constraintStart_toStartOf="@+id/imageView3"
-                            app:layout_constraintTop_toTopOf="@+id/imageView3" />
+                            app:layout_constraintBottom_toBottomOf="@+id/bgTB"
+                            app:layout_constraintEnd_toEndOf="@+id/bgTB"
+                            app:layout_constraintStart_toStartOf="@+id/bgTB"
+                            app:layout_constraintTop_toTopOf="@+id/bgTB" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
-                        android:id="@+id/textView3"
+                        android:id="@+id/tvTB"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Tidak Normal"
@@ -155,7 +155,7 @@
                         android:background="@drawable/bg_button_risk">
 
                         <ImageView
-                            android:id="@+id/imageView3"
+                            android:id="@+id/bgBB"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_margin="8dp"
@@ -166,18 +166,18 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
-                            android:id="@+id/imageView4"
+                            android:id="@+id/ivBB"
                             android:layout_width="49dp"
                             android:layout_height="47dp"
                             android:src="@drawable/ic_weight"
-                            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-                            app:layout_constraintEnd_toEndOf="@+id/imageView3"
-                            app:layout_constraintStart_toStartOf="@+id/imageView3"
-                            app:layout_constraintTop_toTopOf="@+id/imageView3" />
+                            app:layout_constraintBottom_toBottomOf="@+id/bgBB"
+                            app:layout_constraintEnd_toEndOf="@+id/bgBB"
+                            app:layout_constraintStart_toStartOf="@+id/bgBB"
+                            app:layout_constraintTop_toTopOf="@+id/bgBB" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
-                        android:id="@+id/textView3"
+                        android:id="@+id/tvBB"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Tidak Normal"
@@ -197,7 +197,7 @@
                         android:background="@drawable/bg_button_risk">
 
                         <ImageView
-                            android:id="@+id/imageView3"
+                            android:id="@+id/bgSuhu"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_margin="8dp"
@@ -208,18 +208,18 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
-                            android:id="@+id/imageView4"
+                            android:id="@+id/ivSuhu"
                             android:layout_width="49dp"
                             android:layout_height="47dp"
                             android:src="@drawable/ic_thermometer"
-                            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-                            app:layout_constraintEnd_toEndOf="@+id/imageView3"
-                            app:layout_constraintStart_toStartOf="@+id/imageView3"
-                            app:layout_constraintTop_toTopOf="@+id/imageView3" />
+                            app:layout_constraintBottom_toBottomOf="@+id/bgSuhu"
+                            app:layout_constraintEnd_toEndOf="@+id/bgSuhu"
+                            app:layout_constraintStart_toStartOf="@+id/bgSuhu"
+                            app:layout_constraintTop_toTopOf="@+id/bgSuhu" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
-                        android:id="@+id/textView3"
+                        android:id="@+id/tvSuhu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Tidak Normal"
@@ -246,7 +246,7 @@
                         android:background="@drawable/bg_button_risk">
 
                         <ImageView
-                            android:id="@+id/imageView3"
+                            android:id="@+id/bgTensi"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_margin="8dp"
@@ -257,18 +257,18 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
-                            android:id="@+id/imageView4"
+                            android:id="@+id/ivTensi"
                             android:layout_width="49dp"
                             android:layout_height="47dp"
                             android:src="@drawable/ic_blood_pressure"
-                            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-                            app:layout_constraintEnd_toEndOf="@+id/imageView3"
-                            app:layout_constraintStart_toStartOf="@+id/imageView3"
-                            app:layout_constraintTop_toTopOf="@+id/imageView3" />
+                            app:layout_constraintBottom_toBottomOf="@+id/bgTensi"
+                            app:layout_constraintEnd_toEndOf="@+id/bgTensi"
+                            app:layout_constraintStart_toStartOf="@+id/bgTensi"
+                            app:layout_constraintTop_toTopOf="@+id/bgTensi" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
-                        android:id="@+id/textView3"
+                        android:id="@+id/tvTensi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Tidak Normal"
@@ -288,7 +288,7 @@
                         android:background="@drawable/bg_button_risk">
 
                         <ImageView
-                            android:id="@+id/imageView3"
+                            android:id="@+id/bgBloodS"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_margin="8dp"
@@ -299,18 +299,18 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
-                            android:id="@+id/imageView4"
+                            android:id="@+id/ivBloodS"
                             android:layout_width="49dp"
                             android:layout_height="47dp"
                             android:src="@drawable/ic_diabetes"
-                            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-                            app:layout_constraintEnd_toEndOf="@+id/imageView3"
-                            app:layout_constraintStart_toStartOf="@+id/imageView3"
-                            app:layout_constraintTop_toTopOf="@+id/imageView3" />
+                            app:layout_constraintBottom_toBottomOf="@+id/bgBloodS"
+                            app:layout_constraintEnd_toEndOf="@+id/bgBloodS"
+                            app:layout_constraintStart_toStartOf="@+id/bgBloodS"
+                            app:layout_constraintTop_toTopOf="@+id/bgBloodS" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
-                        android:id="@+id/textView3"
+                        android:id="@+id/tvBloodS"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Tidak Normal"
@@ -330,7 +330,7 @@
                         android:background="@drawable/bg_button_risk">
 
                         <ImageView
-                            android:id="@+id/imageView3"
+                            android:id="@+id/bgHeartRate"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_margin="8dp"
@@ -341,18 +341,18 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
-                            android:id="@+id/imageView4"
+                            android:id="@+id/ivHeartRate"
                             android:layout_width="49dp"
                             android:layout_height="47dp"
                             android:src="@drawable/ic_heartbeat"
-                            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-                            app:layout_constraintEnd_toEndOf="@+id/imageView3"
-                            app:layout_constraintStart_toStartOf="@+id/imageView3"
-                            app:layout_constraintTop_toTopOf="@+id/imageView3" />
+                            app:layout_constraintBottom_toBottomOf="@+id/bgHeartRate"
+                            app:layout_constraintEnd_toEndOf="@+id/bgHeartRate"
+                            app:layout_constraintStart_toStartOf="@+id/bgHeartRate"
+                            app:layout_constraintTop_toTopOf="@+id/bgHeartRate" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
-                        android:id="@+id/textView3"
+                        android:id="@+id/tvHeartRate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Tidak Normal"
@@ -364,5 +364,16 @@
 
         </TableLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabChatbot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_chat"
+        android:background="@drawable/fab_no_top_left_radius" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
