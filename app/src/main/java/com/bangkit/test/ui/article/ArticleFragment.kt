@@ -1,5 +1,7 @@
 package com.bangkit.test.ui.article
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -42,8 +44,12 @@ class ArticleFragment : Fragment() {
 
         viewModel.articles.observe(viewLifecycleOwner) { articles ->
             if (articles != null) {
-                binding.rvArticles.adapter = ArticleAdapter(articles) { article ->
-                    // Handle item click
+                binding.rvArticles.adapter = ArticleAdapter(articles) { articleLink ->
+                    // Membuka link artikel
+                    val intent = Intent(Intent.ACTION_VIEW).apply {
+                        data = Uri.parse(articleLink)
+                    }
+                    startActivity(intent)
                 }
             }
         }
@@ -54,6 +60,7 @@ class ArticleFragment : Fragment() {
 
         viewModel.fetchArticles("hamil, ibu, bayi")
     }
+
 
     private fun setupRecyclerView() {
         binding.rvArticles.layoutManager = LinearLayoutManager(requireContext())

@@ -1,12 +1,15 @@
 package com.bangkit.test.ui.home
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bangkit.test.databinding.FragmentHomeBinding
+import com.bangkit.test.chatbot.ChatbotActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -40,18 +43,25 @@ class HomeFragment : Fragment() {
                         val usiakandungan = document.data?.get("usiakandungan")?.toString()
 
                         binding.tvName.text = "Hi $nama"
-                        binding.tvAge.text = umur
+                        binding.tvUmur.text = umur
                         binding.tvKandungan.text = "$usiakandungan minggu kehamilan"
                     }
                 }
                 .addOnFailureListener {
-                    Toast.makeText(requireContext(), "Failed!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Failed to fetch data!", Toast.LENGTH_SHORT).show()
                 }
         } else {
             Toast.makeText(requireContext(), "User not logged in", Toast.LENGTH_SHORT).show()
         }
-    }
 
+        // Setup FAB for Chatbot
+        binding.fabChatbot.setOnClickListener {
+            val intent = Intent(requireContext(), ChatbotActivity::class.java)
+            startActivity(intent)
+        }
+
+
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
