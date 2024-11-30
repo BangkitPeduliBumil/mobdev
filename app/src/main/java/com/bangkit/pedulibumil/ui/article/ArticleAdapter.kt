@@ -1,11 +1,10 @@
-package com.bangkit.test.ui.article
+package com.bangkit.pedulibumil.ui.article
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bangkit.test.R
-import com.bangkit.test.databinding.ItemArticleBinding
+import com.bangkit.pedulibumil.R
+import com.bangkit.pedulibumil.databinding.ItemArticleBinding
 import com.bumptech.glide.Glide
 
 class ArticleAdapter(
