@@ -361,8 +361,19 @@
                 </LinearLayout>
 
             </TableRow>
-
         </TableLayout>
+        <Button
+            android:id="@+id/btnRisk"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Cek Resiko!"
+            android:layout_marginTop="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.8"
+            tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabChatbot"
