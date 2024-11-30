@@ -25,6 +25,7 @@ class ArticleAdapter(
                     .placeholder(R.drawable.ic_place_holder)
                     .into(ivThumbnail)
 
+
                 root.setOnClickListener { onClick(article.link) } // Mengirim link artikel
             }
         }
@@ -42,4 +43,3 @@ class ArticleAdapter(
 
     override fun getItemCount(): Int = articles.size
 }
-

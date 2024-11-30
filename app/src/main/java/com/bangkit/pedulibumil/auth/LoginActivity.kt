@@ -22,6 +22,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
+
 class LoginActivity : AppCompatActivity() {
     private lateinit var btnSignup: TextView
     private lateinit var btnLogin: Button
@@ -76,6 +77,7 @@ class LoginActivity : AppCompatActivity() {
         btnGoogleLogin.setOnClickListener {
             signInWithGoogle()
         }
+
 
         btnSignup.setOnClickListener {
             val intent = Intent(this, SignupActivity::class.java)
