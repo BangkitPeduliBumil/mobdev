@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.bangkit.test"
+    namespace = "com.bangkit.pedulibumil"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.bangkit.test"
+        applicationId = "com.bangkit.pedulibumil"
         minSdk = 31
         targetSdk = 34
         versionCode = 1
@@ -62,9 +62,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation("org.tensorflow:tensorflow-lite-metadata:0.4.4")
-    implementation("org.tensorflow:tensorflow-lite-task-vision:0.4.4")
-
     implementation("androidx.room:room-runtime:2.6.1")
     ksp("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
@@ -72,8 +69,10 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0")
     ksp("com.github.bumptech.glide:compiler:4.16.0")
 
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.google.code.gson:gson:2.9.0")
+
 
     implementation("com.github.1902shubh:SendMail:1.0.0")
 

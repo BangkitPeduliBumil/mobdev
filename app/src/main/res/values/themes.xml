@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Test" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Pedulibumil" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/pink_pastel</item>
         <item name="colorPrimaryVariant">@color/pink_pastel</item>
         <item name="colorOnPrimary">@color/white</item>
@@ -14,5 +14,5 @@
         <item name="android:windowIsTranslucent">true</item>
     </style>
 
-    <style name="Theme.Test" parent="Base.Theme.Test" />
+    <style name="Theme.Pedulibumil" parent="Base.Theme.Pedulibumil" />
 </resources>
