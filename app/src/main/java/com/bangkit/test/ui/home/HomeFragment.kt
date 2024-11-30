@@ -2,7 +2,6 @@ package com.bangkit.test.ui.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bangkit.test.databinding.FragmentHomeBinding
 import com.bangkit.test.chatbot.ChatbotActivity
+import com.bangkit.test.risk.RiskActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -32,6 +32,8 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val safeBinding = _binding ?: return
+
         val userId = FirebaseAuth.getInstance().currentUser?.uid
         if (userId != null) {
             val ref = db.collection("user").document(userId)
@@ -42,9 +44,9 @@ class HomeFragment : Fragment() {
                         val umur = document.data?.get("umur")?.toString()
                         val usiakandungan = document.data?.get("usiakandungan")?.toString()
 
-                        binding.tvName.text = "Hi $nama"
-                        binding.tvUmur.text = umur
-                        binding.tvKandungan.text = "$usiakandungan minggu kehamilan"
+                        safeBinding.tvName.text = "Hi $nama"
+                        safeBinding.tvUmur.text = umur
+                        safeBinding.tvKandungan.text = "$usiakandungan minggu kehamilan"
                     }
                 }
                 .addOnFailureListener {
@@ -55,13 +57,21 @@ class HomeFragment : Fragment() {
         }
 
         // Setup FAB for Chatbot
-        binding.fabChatbot.setOnClickListener {
+        safeBinding.fabChatbot.setOnClickListener {
             val intent = Intent(requireContext(), ChatbotActivity::class.java)
             startActivity(intent)
         }
 
+        safeBinding.btnRisk.setOnClickListener {
+            val intent = Intent(requireContext(), RiskActivity::class.java).apply {
+                putExtra(RiskActivity.ARG_PARAM1, "value1")
+                putExtra(RiskActivity.ARG_PARAM2, "value2")
+            }
+            startActivity(intent)
+        }
 
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
