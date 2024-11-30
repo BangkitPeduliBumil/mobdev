@@ -7,7 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.bangkit.pedulibumil.databinding.ActivityMainBinding
-
+//test
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
