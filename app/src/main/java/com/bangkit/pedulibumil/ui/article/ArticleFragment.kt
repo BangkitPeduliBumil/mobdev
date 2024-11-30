@@ -1,5 +1,6 @@
 package com.bangkit.pedulibumil.ui.article
 
+
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -44,6 +45,7 @@ class ArticleFragment : Fragment() {
 
         viewModel.articles.observe(viewLifecycleOwner) { articles ->
             if (articles != null) {
+
                 binding.rvArticles.adapter = ArticleAdapter(articles) { articleLink ->
                     // Membuka link artikel
                     val intent = Intent(Intent.ACTION_VIEW).apply {
@@ -60,7 +62,6 @@ class ArticleFragment : Fragment() {
 
         viewModel.fetchArticles("hamil, ibu, bayi")
     }
-
 
     private fun setupRecyclerView() {
         binding.rvArticles.layoutManager = LinearLayoutManager(requireContext())

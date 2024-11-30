@@ -33,7 +33,6 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val safeBinding = _binding ?: return
-
         val userId = FirebaseAuth.getInstance().currentUser?.uid
         if (userId != null) {
             val ref = db.collection("user").document(userId)
@@ -66,7 +65,6 @@ class HomeFragment : Fragment() {
             val intent = Intent(requireContext(), RiskActivity::class.java)
             startActivity(intent)
         }
-
     }
 
     override fun onDestroyView() {
