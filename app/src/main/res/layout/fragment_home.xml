@@ -8,66 +8,77 @@
     tools:context=".ui.home.HomeFragment" >
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/ivLogo"
         android:layout_width="75dp"
         android:layout_height="67dp"
-        android:layout_marginLeft="250dp"
+        android:layout_marginLeft="300dp"
         android:layout_marginTop="25dp"
-        android:src="@drawable/profile"
+        android:src="@drawable/login_banner_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Hi Username TextView -->
-        <TextView
-            android:id="@+id/tvName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
-            android:layout_marginStart="32dp"
-            android:text="@string/hi_username"
-            android:textColor="#FFFFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="@string/hi_username"
+        android:textColor="#FFFFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/ivLogo"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- LinearLayout for Age Info -->
-        <LinearLayout
-            android:id="@+id/llAge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            app:layout_constraintStart_toStartOf="@+id/tvName"
-            app:layout_constraintTop_toBottomOf="@+id/tvName">
 
-            <TextView
-                android:id="@+id/tvAge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/usia"
-                android:textColor="#808080"
-                android:textStyle="bold" />
+    <TextView
+        android:id="@+id/tvUmur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/usia"
+        android:textColor="@color/gray"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/ivLogo"
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
-            <!-- Separator -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="|"
-                android:textColor="#808080"
-                android:paddingHorizontal="8dp" />
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="20dp"
+        android:text="Prediksi Resiko"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tvKandungan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/usia_kehamilan"
-                android:textColor="#808080"
-                android:textStyle="bold" />
-        </LinearLayout>
+    <TextView
+        android:id="@+id/tvResiko"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="40dp"
+        android:text="Tampil Di Sini"
+        android:textColor="@color/gray"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+    <TextView
+        android:id="@+id/tvKandungan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/usia_kehamilan"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/ivLogo"
+        app:layout_constraintTop_toBottomOf="@+id/tvUmur" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
@@ -75,180 +86,305 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        app:layout_constraintTop_toBottomOf="@+id/ivLogo">
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
 
-            android:text="@string/resiko_kehamilan"
-            android:textColor="#FF80B2"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <TableLayout
+            android:id="@+id/tableLayout"
             android:layout_width="match_parent"
-            android:layout_height="170dp"
-            android:layout_margin="20dp"
-            android:layout_marginTop="48dp"
-            android:background="@drawable/bacground_resiko"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="140dp"
+            tools:layout_editor_absoluteY="60dp">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_button_risk">
+
+                        <ImageView
+                            android:id="@+id/bgTB"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_margin="8dp"
+                            android:src="@drawable/circle_risk_bg"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/ivTB"
+                            android:layout_width="49dp"
+                            android:layout_height="47dp"
+                            android:src="@drawable/ic_height"
+                            app:layout_constraintBottom_toBottomOf="@+id/bgTB"
+                            app:layout_constraintEnd_toEndOf="@+id/bgTB"
+                            app:layout_constraintStart_toStartOf="@+id/bgTB"
+                            app:layout_constraintTop_toTopOf="@+id/bgTB" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/tvTB"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tidak Normal"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_button_risk">
+
+                        <ImageView
+                            android:id="@+id/bgBB"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_margin="8dp"
+                            android:src="@drawable/circle_risk_bg"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/ivBB"
+                            android:layout_width="49dp"
+                            android:layout_height="47dp"
+                            android:src="@drawable/ic_weight"
+                            app:layout_constraintBottom_toBottomOf="@+id/bgBB"
+                            app:layout_constraintEnd_toEndOf="@+id/bgBB"
+                            app:layout_constraintStart_toStartOf="@+id/bgBB"
+                            app:layout_constraintTop_toTopOf="@+id/bgBB" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/tvBB"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tidak Normal"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_button_risk">
+
+                        <ImageView
+                            android:id="@+id/bgSuhu"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_margin="8dp"
+                            android:src="@drawable/circle_risk_bg"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/ivSuhu"
+                            android:layout_width="49dp"
+                            android:layout_height="47dp"
+                            android:src="@drawable/ic_thermometer"
+                            app:layout_constraintBottom_toBottomOf="@+id/bgSuhu"
+                            app:layout_constraintEnd_toEndOf="@+id/bgSuhu"
+                            app:layout_constraintStart_toStartOf="@+id/bgSuhu"
+                            app:layout_constraintTop_toTopOf="@+id/bgSuhu" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/tvSuhu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tidak Normal"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_button_risk">
+
+                        <ImageView
+                            android:id="@+id/bgTensi"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_margin="8dp"
+                            android:src="@drawable/circle_risk_bg"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/ivTensi"
+                            android:layout_width="49dp"
+                            android:layout_height="47dp"
+                            android:src="@drawable/ic_blood_pressure"
+                            app:layout_constraintBottom_toBottomOf="@+id/bgTensi"
+                            app:layout_constraintEnd_toEndOf="@+id/bgTensi"
+                            app:layout_constraintStart_toStartOf="@+id/bgTensi"
+                            app:layout_constraintTop_toTopOf="@+id/bgTensi" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/tvTensi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tidak Normal"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_button_risk">
+
+                        <ImageView
+                            android:id="@+id/bgBloodS"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_margin="8dp"
+                            android:src="@drawable/circle_risk_bg"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/ivBloodS"
+                            android:layout_width="49dp"
+                            android:layout_height="47dp"
+                            android:src="@drawable/ic_diabetes"
+                            app:layout_constraintBottom_toBottomOf="@+id/bgBloodS"
+                            app:layout_constraintEnd_toEndOf="@+id/bgBloodS"
+                            app:layout_constraintStart_toStartOf="@+id/bgBloodS"
+                            app:layout_constraintTop_toTopOf="@+id/bgBloodS" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/tvBloodS"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tidak Normal"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_button_risk">
+
+                        <ImageView
+                            android:id="@+id/bgHeartRate"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_margin="8dp"
+                            android:src="@drawable/circle_risk_bg"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/ivHeartRate"
+                            android:layout_width="49dp"
+                            android:layout_height="47dp"
+                            android:src="@drawable/ic_heartbeat"
+                            app:layout_constraintBottom_toBottomOf="@+id/bgHeartRate"
+                            app:layout_constraintEnd_toEndOf="@+id/bgHeartRate"
+                            app:layout_constraintStart_toStartOf="@+id/bgHeartRate"
+                            app:layout_constraintTop_toTopOf="@+id/bgHeartRate" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/tvHeartRate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tidak Normal"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </TableRow>
+        </TableLayout>
+        <Button
+            android:id="@+id/btnRisk"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Cek Resiko!"
+            android:layout_marginTop="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3">
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="200dp"
-                android:text="@string/tekanan_darah"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="170dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/tidak_normal"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="24dp"
-                android:layout_height="21dp"
-                android:src="@drawable/baseline_warning_amber_24"
-                app:layout_constraintBottom_toBottomOf="@+id/textView5"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView5"
-                app:layout_constraintTop_toTopOf="@+id/textView5" />
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="200dp"
-                android:text="@string/gula_darah"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="170dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/tidak_normal"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="24dp"
-                android:layout_height="21dp"
-                android:src="@drawable/baseline_warning_amber_24"
-                app:layout_constraintBottom_toBottomOf="@+id/textView7"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.484"
-                app:layout_constraintStart_toEndOf="@+id/textView7"
-                app:layout_constraintTop_toTopOf="@+id/textView7" />
-
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="200dp"
-                android:text="TextView"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="170dp"
-                android:layout_marginTop="20dp"
-                android:text="Normal"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="24dp"
-                android:layout_height="21dp"
-                android:layout_marginLeft="17dp"
-                android:src="@drawable/baseline_check_circle_24"
-                app:layout_constraintBottom_toBottomOf="@+id/textView10"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView10"
-                app:layout_constraintTop_toTopOf="@+id/textView10"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="200dp"
-                android:text="Status Resiko"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="170dp"
-                android:layout_marginTop="20dp"
-                android:text="Tidak Normal"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="wrap_content"
-                android:layout_height="21dp"
-                android:src="@drawable/baseline_warning_amber_24"
-                app:layout_constraintBottom_toBottomOf="@+id/textView12"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView12"
-                app:layout_constraintTop_toTopOf="@+id/textView12" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.8"
+            tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabChatbot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_chat"
+        android:background="@drawable/fab_no_top_left_radius" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

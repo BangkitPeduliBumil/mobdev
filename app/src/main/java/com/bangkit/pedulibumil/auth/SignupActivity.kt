@@ -27,7 +27,7 @@ class SignupActivity : AppCompatActivity() {
     private lateinit var btnGoogleSignUp: LinearLayout
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
-
+    private lateinit var btnLogin: LinearLayout
     companion object {
         private const val RC_SIGN_IN = 1001
     }
@@ -51,6 +51,7 @@ class SignupActivity : AppCompatActivity() {
         etPassword = findViewById(R.id.etPassword)
         btnNext = findViewById(R.id.btnNext)
         btnGoogleSignUp = findViewById(R.id.llGoogleLogin)
+        btnLogin = findViewById(R.id.tvLogin)
 
         // Set onClickListener for the Next button
         btnNext.setOnClickListener {
@@ -88,6 +89,10 @@ class SignupActivity : AppCompatActivity() {
         // Set onClickListener for Google Sign-Up button
         btnGoogleSignUp.setOnClickListener {
             signInWithGoogle()
+        }
+        btnLogin.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 

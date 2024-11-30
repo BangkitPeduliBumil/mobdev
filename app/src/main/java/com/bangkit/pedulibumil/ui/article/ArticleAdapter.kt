@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.pedulibumil.R
 import com.bangkit.pedulibumil.databinding.ItemArticleBinding
 import com.bumptech.glide.Glide
-//yes
+
 class ArticleAdapter(
     private val articles: List<NewsResultsItem>,
-    private val onClick: (NewsResultsItem) -> Unit
+    private val onClick: (String) -> Unit // Mengirimkan link artikel
 ) : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() {
 
     inner class ArticleViewHolder(private val binding: ItemArticleBinding) :
@@ -25,7 +25,8 @@ class ArticleAdapter(
                     .placeholder(R.drawable.ic_place_holder)
                     .into(ivThumbnail)
 
-                root.setOnClickListener { onClick(article) }
+
+                root.setOnClickListener { onClick(article.link) } // Mengirim link artikel
             }
         }
     }

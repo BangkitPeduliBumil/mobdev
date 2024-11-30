@@ -1,12 +1,15 @@
 package com.bangkit.pedulibumil.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.bangkit.pedulibumil.chatbot.ChatbotActivity
 import com.bangkit.pedulibumil.databinding.FragmentHomeBinding
+import com.bangkit.pedulibumil.risk.RiskActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -29,6 +32,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val safeBinding = _binding ?: return
         val userId = FirebaseAuth.getInstance().currentUser?.uid
         if (userId != null) {
             val ref = db.collection("user").document(userId)
@@ -39,16 +43,27 @@ class HomeFragment : Fragment() {
                         val umur = document.data?.get("umur")?.toString()
                         val usiakandungan = document.data?.get("usiakandungan")?.toString()
 
-                        binding.tvName.text = "Hi $nama"
-                        binding.tvAge.text = umur
-                        binding.tvKandungan.text = "$usiakandungan minggu kehamilan"
+                        safeBinding.tvName.text = "Hi $nama"
+                        safeBinding.tvUmur.text = umur
+                        safeBinding.tvKandungan.text = "$usiakandungan minggu kehamilan"
                     }
                 }
                 .addOnFailureListener {
-                    Toast.makeText(requireContext(), "Failed!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Failed to fetch data!", Toast.LENGTH_SHORT).show()
                 }
         } else {
             Toast.makeText(requireContext(), "User not logged in", Toast.LENGTH_SHORT).show()
+        }
+
+        // Setup FAB for Chatbot
+        safeBinding.fabChatbot.setOnClickListener {
+            val intent = Intent(requireContext(), ChatbotActivity::class.java)
+            startActivity(intent)
+        }
+
+        safeBinding.btnRisk.setOnClickListener {
+            val intent = Intent(requireContext(), RiskActivity::class.java)
+            startActivity(intent)
         }
     }
 
