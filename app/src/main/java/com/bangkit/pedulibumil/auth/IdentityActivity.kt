@@ -12,7 +12,7 @@ import com.bangkit.pedulibumil.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-
+//test
 class IdentityActivity : AppCompatActivity() {
 
     private lateinit var etName: EditText
