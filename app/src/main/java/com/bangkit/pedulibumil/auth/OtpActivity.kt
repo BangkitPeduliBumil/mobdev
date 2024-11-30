@@ -1,4 +1,4 @@
-package com.bangkit.test.auth
+package com.bangkit.pedulibumil.auth
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,7 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
-import com.bangkit.test.R
+import com.bangkit.pedulibumil.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlin.random.Random
 

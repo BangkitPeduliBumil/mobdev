@@ -1,11 +1,11 @@
-package com.bangkit.test
+package com.bangkit.pedulibumil
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
-import com.bangkit.test.databinding.ActivitySplashBinding
+import com.bangkit.pedulibumil.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashBinding

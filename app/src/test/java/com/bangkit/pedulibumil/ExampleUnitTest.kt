@@ -1,4 +1,4 @@
-package com.bangkit.test
+package com.bangkit.pedulibumil
 
 import org.junit.Test
 

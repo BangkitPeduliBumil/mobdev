@@ -1,4 +1,4 @@
-package com.bangkit.test.ui.chatbot
+package com.bangkit.pedulibumil.ui.chatbot
 
 import androidx.lifecycle.ViewModel
 

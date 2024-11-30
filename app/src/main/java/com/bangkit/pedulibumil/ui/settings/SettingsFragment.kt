@@ -1,4 +1,4 @@
-package com.bangkit.test.ui.settings
+package com.bangkit.pedulibumil.ui.settings
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.bangkit.test.auth.LoginActivity
-import com.bangkit.test.databinding.FragmentSettingsBinding
+import com.bangkit.pedulibumil.auth.LoginActivity
+import com.bangkit.pedulibumil.databinding.FragmentSettingsBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -40,7 +40,7 @@ class SettingsFragment : Fragment() {
 
         // Konfigurasi Google Sign-In Client
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(com.bangkit.test.R.string.default_web_client_id))
+            .requestIdToken(getString(com.bangkit.pedulibumil.R.string.default_web_client_id))
             .requestEmail()
             .build()
         googleSignInClient = GoogleSignIn.getClient(requireContext(), gso)

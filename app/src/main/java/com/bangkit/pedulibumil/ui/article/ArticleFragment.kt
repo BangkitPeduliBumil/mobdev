@@ -1,4 +1,4 @@
-package com.bangkit.test.ui.article
+package com.bangkit.pedulibumil.ui.article
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bangkit.test.databinding.FragmentArticleBinding
+import com.bangkit.pedulibumil.databinding.FragmentArticleBinding
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

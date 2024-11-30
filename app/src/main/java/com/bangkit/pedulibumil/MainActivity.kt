@@ -1,13 +1,12 @@
-package com.bangkit.test
+package com.bangkit.pedulibumil
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.bangkit.test.databinding.ActivityMainBinding
+import com.bangkit.pedulibumil.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

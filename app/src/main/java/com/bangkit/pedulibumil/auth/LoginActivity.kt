@@ -1,4 +1,4 @@
-package com.bangkit.test.auth
+package com.bangkit.pedulibumil.auth
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,8 +9,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.bangkit.test.MainActivity
-import com.bangkit.test.R
+import com.bangkit.pedulibumil.MainActivity
+import com.bangkit.pedulibumil.R
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient

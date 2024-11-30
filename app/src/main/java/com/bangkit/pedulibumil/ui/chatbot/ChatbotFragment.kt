@@ -1,4 +1,4 @@
-package com.bangkit.test.ui.chatbot
+package com.bangkit.pedulibumil.ui.chatbot
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
-import com.bangkit.test.databinding.FragmentChatbotBinding
+import com.bangkit.pedulibumil.databinding.FragmentChatbotBinding
 
 class ChatbotFragment : Fragment() {
 

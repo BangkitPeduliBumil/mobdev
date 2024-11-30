@@ -1,4 +1,4 @@
-package com.bangkit.test.ui.article
+package com.bangkit.pedulibumil.ui.article
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

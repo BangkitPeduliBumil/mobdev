@@ -1,4 +1,4 @@
-package com.bangkit.test.network
+package com.bangkit.pedulibumil.network
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

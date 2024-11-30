@@ -1,6 +1,6 @@
-package com.bangkit.test.ui.article
+package com.bangkit.pedulibumil.ui.article
 
-import com.bangkit.test.BuildConfig
+import com.bangkit.pedulibumil.BuildConfig
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

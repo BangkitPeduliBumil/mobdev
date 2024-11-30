@@ -1,4 +1,4 @@
-package com.bangkit.test
+package com.bangkit.pedulibumil
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
