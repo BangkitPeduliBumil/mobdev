@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.pedulibumil.R
 import com.bangkit.pedulibumil.databinding.ItemArticleBinding
 import com.bumptech.glide.Glide
-//test lg
+//test trs
 class ArticleAdapter(
     private val articles: List<NewsResultsItem>,
     private val onClick: (String) -> Unit // Mengirimkan link artikel
