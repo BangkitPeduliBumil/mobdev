@@ -6,6 +6,7 @@ import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bangkit.pedulibumil.MainActivity
@@ -27,7 +28,7 @@ class SignupActivity : AppCompatActivity() {
     private lateinit var btnGoogleSignUp: LinearLayout
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
-    private lateinit var btnLogin: LinearLayout
+    private lateinit var btnLogin: TextView
     companion object {
         private const val RC_SIGN_IN = 1001
     }

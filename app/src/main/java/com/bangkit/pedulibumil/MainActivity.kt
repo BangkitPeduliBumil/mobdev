@@ -7,7 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.bangkit.pedulibumil.databinding.ActivityMainBinding
-
+//test
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(
             setOf(
 
-                R.id.navigation_home, R.id.navigation_article, R.id.navigation_settings, R.id.navigation_chatbot
+                R.id.navigation_home, R.id.navigation_article, R.id.navigation_settings, R.id.navigation_history
             )
         )
 
