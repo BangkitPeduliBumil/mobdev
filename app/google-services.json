@@ -14,11 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "511713702149-7pkkulkbthv8rd19qc8ojnvqvbls48to.apps.googleusercontent.com",
+          "client_id": "511713702149-mr4ju2jcfvu2uqggemi7rfiblc1aqjou.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.bangkit.pedulibumil",
-            "certificate_hash": "d004fa31a81f0c9dd0addeeb2d756fdd7817e0b1"
+            "certificate_hash": "9dc91c8636d76c4a059f8da58adc15d629ebb75d"
           }
         },
         {

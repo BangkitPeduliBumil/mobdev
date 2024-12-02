@@ -47,6 +47,9 @@
         <activity
             android:name=".risk.RiskActivity"
             android:exported="false" />
+        <activity
+            android:name=".risk.ResultActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

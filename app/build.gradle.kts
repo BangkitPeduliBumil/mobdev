@@ -11,18 +11,27 @@ android {
 
     defaultConfig {
         applicationId = "com.bangkit.pedulibumil"
-        minSdk = 31
+        minSdk = 30
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "NEWS_API_KEY", "\"${project.findProperty("NEWS_API_KEY") ?: ""}\"")
+    }
 
+    signingConfigs {
+        create("release") {
+            storeFile = file("D:/bangkit/Test/keypedulibumil.jks") // Path ke keystore
+            storePassword = "122331" // Password keystore
+            keyAlias = "keypb" // Alias kunci
+            keyPassword = "122331" // Password untuk kunci
+        }
     }
 
     buildTypes {
         release {
+            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -30,6 +39,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8

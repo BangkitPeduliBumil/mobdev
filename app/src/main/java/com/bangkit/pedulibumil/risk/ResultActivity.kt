@@ -11,13 +11,13 @@ class ResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
 
-        val riskCategory = intent.getStringExtra("RISK_CATEGORY")
-        val predictions = intent.getFloatArrayExtra("PREDICTIONS")
+        val riskCategory = intent.getStringExtra("risk_category") ?: "Unknown"
+        val predictions = intent.getFloatArrayExtra("predictions") ?: floatArrayOf()
 
-        val riskTextView = findViewById<TextView>(R.id.tvRiskCategory)
-        val predictionTextView = findViewById<TextView>(R.id.tvPredictions)
+        val tvRiskCategory = findViewById<TextView>(R.id.tvRiskCategory)
+        val tvPredictions = findViewById<TextView>(R.id.tvPredictions)
 
-        riskTextView.text = "Risk Category: $riskCategory"
-        predictionTextView.text = "Predictions: ${predictions?.joinToString(", ")}"
+        tvRiskCategory.text = "Risk Category: $riskCategory"
+        tvPredictions.text = "Predictions: ${predictions.joinToString(", ")}"
     }
 }

@@ -7,7 +7,7 @@ import retrofit2.http.POST
 
 data class RiskRequest(
     val name: String,
-    val input: List<Int>
+    val input: List<Double>  // Mengubah tipe data menjadi List<Double> untuk mendukung nilai desimal
 )
 
 interface ApiService {
