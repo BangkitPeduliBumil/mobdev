@@ -53,7 +53,7 @@ class RiskActivity : AppCompatActivity() {
                         val suhu = inputSuhu.text.toString().toDoubleOrNull() ?: 0.0
                         val systolic = inputSystolic.text.toString().toIntOrNull() ?: 0
                         val diastolic = inputDiastolic.text.toString().toIntOrNull() ?: 0
-                        val gulaDarah = inputGD.text.toString().toIntOrNull() ?: 0
+                        val gulaDarah = inputGD.text.toString().toDoubleOrNull() ?: 0.0
                         val detakJantung = inputDJ.text.toString().toIntOrNull() ?: 0
 
                         // Validasi tinggi badan dan berat badan
@@ -78,7 +78,7 @@ class RiskActivity : AppCompatActivity() {
                             systolic.toDouble(), // Tekanan darah sistolik (dalam format Double)
                             diastolic.toDouble(), // Tekanan darah diastolik (dalam format Double)
                             bmi,               // BMI (dalam format desimal)
-                            gulaDarah.toDouble() // Gula darah (dalam format Double)
+                            gulaDarah // Gula darah (dalam format Double)
                         )
                         Log.d("RiskActivity", "Inputs: $inputs")
                         sendRiskDataToApi(name, age, inputs)
@@ -140,7 +140,11 @@ class RiskActivity : AppCompatActivity() {
             "predictions" to predictions
         )
 
-        db.collection("prediction").add(predictionData)
+        // Menggunakan koleksi "predictions" yang sudah ada
+        val predictionRef = db.collection("predictions")
+
+        // Menambahkan data prediksi baru ke dalam koleksi "predictions"
+        predictionRef.add(predictionData)
             .addOnSuccessListener {
                 onSuccess()
             }
@@ -149,4 +153,5 @@ class RiskActivity : AppCompatActivity() {
                 Toast.makeText(this, "Gagal menyimpan prediksi", Toast.LENGTH_SHORT).show()
             }
     }
+
 }
