@@ -78,7 +78,7 @@ class RiskActivity : AppCompatActivity() {
                             systolic.toDouble(), // Tekanan darah sistolik (dalam format Double)
                             diastolic.toDouble(), // Tekanan darah diastolik (dalam format Double)
                             bmi,               // BMI (dalam format desimal)
-                            gulaDarah // Gula darah (dalam format Double)
+                            gulaDarah
                         )
                         Log.d("RiskActivity", "Inputs: $inputs")
                         sendRiskDataToApi(name, age, inputs)
