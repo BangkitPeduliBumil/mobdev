@@ -8,14 +8,14 @@
 
 <!--Tinggi Badan-->
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginRight="30dp"
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/inputDJ" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputTB"
@@ -34,9 +34,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/TB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/pink_pastel" />
+            android:backgroundTint="@color/pink_pastel"
+            android:inputType="numberDecimal"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 <!--Berat Badan-->
@@ -56,9 +58,11 @@
         app:layout_constraintTop_toBottomOf="@+id/inputTB">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/BB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/pink_pastel" />
+            android:backgroundTint="@color/pink_pastel"
+            android:inputType="numberDecimal"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 <!--Suhu-->
@@ -78,20 +82,21 @@
         app:layout_constraintTop_toBottomOf="@+id/inputBB">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/suhu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/pink_pastel" />
+            android:backgroundTint="@color/pink_pastel"
+            android:inputType="numberDecimal"/>
     </com.google.android.material.textfield.TextInputLayout>
-
-    <!--Tekanan Darah-->
+    <!-- Systolic Blood Pressure -->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputTD"
+        android:id="@+id/inputSystolic"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:hint="Tekanan Darah"
+        android:hint="Tekanan Darah Systolic"
         app:endIconMode="clear_text"
         app:helperText="Required*"
         app:helperTextTextColor="@color/design_default_color_error"
@@ -100,9 +105,35 @@
         app:layout_constraintTop_toBottomOf="@+id/inputSuhu">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/systolic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/pink_pastel" />
+            android:backgroundTint="@color/pink_pastel"
+            android:inputType="numberDecimal"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Diastolic Blood Pressure -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputDiastolic"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:hint="Tekanan Darah Diastolic"
+        app:endIconMode="clear_text"
+        app:helperText="Required*"
+        app:helperTextTextColor="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputSystolic">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/diastolic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/pink_pastel"
+            android:inputType="numberDecimal"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <!--Gula Darah-->
@@ -119,39 +150,19 @@
         app:helperTextTextColor="@color/design_default_color_error"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputTD">
+        app:layout_constraintTop_toBottomOf="@+id/inputDiastolic">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/GD"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/pink_pastel" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!--Usia-->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputUsia"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:hint="Usia"
-        app:endIconMode="clear_text"
-        app:helperText="Required*"
-        app:helperTextTextColor="@color/design_default_color_error"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputGD">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/pink_pastel" />
+            android:backgroundTint="@color/pink_pastel"
+            android:inputType="numberDecimal"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <!--Detak Jantung-->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/inputDJ"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -163,12 +174,14 @@
         app:helperTextTextColor="@color/design_default_color_error"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputUsia">
+        app:layout_constraintTop_toBottomOf="@+id/inputGD">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/DJ"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/pink_pastel" />
+            android:backgroundTint="@color/pink_pastel"
+            android:inputType="numberDecimal"/>
 
 
     </com.google.android.material.textfield.TextInputLayout>
