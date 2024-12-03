@@ -10,14 +10,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Risk Category"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="16dp" />
+        android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/tvPredictions"
+    <Button
+        android:id="@+id/btnClose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Predictions"
-        android:textSize="16sp" />
+        android:layout_marginTop="16dp"
+        android:text="Close" />
 </LinearLayout>
