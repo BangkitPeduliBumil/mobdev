@@ -109,6 +109,7 @@ class HomeFragment : Fragment() {
         })
     }
 
+    //test
     override fun onResume() {
         super.onResume()
         loadData()
