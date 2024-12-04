@@ -7,7 +7,7 @@
     <string name="hint_name">Nama</string>
     <string name="hint_password">Kata Sandi</string>
     <string name="hint_birth_date">Tanggal Lahir</string>
-    <string name="register">REGISTER</string>
+    <string name="register">DAFTAR</string>
     <string name="or">Atau</string>
     <string name="google_login">Lanjutkan dengan Akun Google</string>
     <string name="login_link">Sudah Memiliki Akun? Masuk Disini</string>
@@ -22,7 +22,7 @@
     <string name="title_placeholder">Judul Artikel</string>
     <string name="source_placeholder">Sumber Artikel</string>
     <string name="date_placeholder">Tanggal</string>
-    <string name="hi_username">HI ! Username</string>
+    <string name="hi_username">Hi, Username</string>
     <string name="usia_kehamilan">Usia Kehamilan</string>
     <string name="resiko_kehamilan">Resiko Kehamilan</string>
     <string name="tekanan_darah">Tekanan Darah</string>

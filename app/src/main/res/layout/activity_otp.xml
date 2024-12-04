@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <ImageView
         android:layout_width="334dp"
         android:layout_height="245dp"
@@ -16,7 +17,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter the OTP\nwe sent you on the following email : "
+        android:text="Masukkan OTP\nyang telah kami kirimkan ke email Anda : "
         android:textSize="17sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -116,7 +117,7 @@
         android:id="@+id/tvResend"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Didn't receive the OTP? Resend OTP"
+        android:text="Belum Terima OTP? Kirim Ulang Sekarang!"
         android:textColor="#950000"
         android:textStyle="bold"
         android:textSize="16sp"
@@ -126,11 +127,12 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="DONE"
+        android:text="SELESAI"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginTop="50dp"
         android:id="@+id/button"
         android:textAllCaps="true" />
 
-</LinearLayout>
+</LinearLayout
+   >

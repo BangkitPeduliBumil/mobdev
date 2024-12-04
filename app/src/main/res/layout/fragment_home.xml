@@ -7,94 +7,103 @@
     android:background="#FFC0D0"
     tools:context=".ui.home.HomeFragment" >
 
-    <ImageView
-        android:id="@+id/ivLogo"
-        android:layout_width="75dp"
-        android:layout_height="67dp"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="25dp"
-        android:src="@drawable/login_banner_1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!-- Hi Username TextView -->
 
-        <!-- Hi Username TextView -->
-    <TextView
-        android:id="@+id/tvName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="@string/hi_username"
-        android:textColor="#FFFFFFFF"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/ivLogo"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <TextView
-        android:id="@+id/tvUmur"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/usia"
-        android:textColor="@color/gray"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/ivLogo"
-        app:layout_constraintTop_toBottomOf="@+id/tvName" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginBottom="20dp"
-        android:text="Prediksi Resiko"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvResiko"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginBottom="40dp"
-        android:text="Tampil Di Sini"
-        android:textColor="@color/gray"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:text="Resiko Kehamilan"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvKandungan"
+    <Button
+        android:id="@+id/btnRisk"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="15dp"
+        android:backgroundTint="@color/white"
+        android:text="Cek Resiko!"
+        android:textColor="@color/pink_pastel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvResiko"
+        app:layout_constraintWidth_percent="0.8"
+        tools:ignore="MissingConstraints" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/usia_kehamilan"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/ivLogo"
-        app:layout_constraintTop_toBottomOf="@+id/tvUmur" />
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hi_username"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/tvUmur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/usia"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/gray"/>
+
+        <TextView
+            android:id="@+id/tvKandungan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/usia_kehamilan"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/gray"/>
+    </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="100dp"
         android:background="@drawable/bottom_background_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivLogo">
+        app:layout_constraintTop_toTopOf="@+id/linearLayout">
 
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Artikel"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
 
         <TableLayout
             android:id="@+id/tableLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="140dp"
-            tools:layout_editor_absoluteY="60dp">
+            android:layout_height="0dp"
+            android:layout_margin="20dp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="140dp">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -138,8 +147,17 @@
                         android:id="@+id/tvTB"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Tidak Normal"
+                        android:text="Tinggi Badan"
                         android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvHasilTB"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Hasil"
+                        android:textAlignment="center"
+                        android:textColor="@color/gray"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -180,8 +198,17 @@
                         android:id="@+id/tvBB"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Tidak Normal"
+                        android:text="Berat Badan"
                         android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvHasilBB"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Hasil"
+                        android:textAlignment="center"
+                        android:textColor="@color/gray"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -222,8 +249,17 @@
                         android:id="@+id/tvSuhu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Tidak Normal"
+                        android:text="Suhu Tubuh"
                         android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvHasilSuhu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Hasil"
+                        android:textAlignment="center"
+                        android:textColor="@color/gray"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -271,8 +307,17 @@
                         android:id="@+id/tvTensi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Tidak Normal"
+                        android:text="Tekanan Darah"
                         android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvHasilTensi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Hasil"
+                        android:textAlignment="center"
+                        android:textColor="@color/gray"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -313,8 +358,17 @@
                         android:id="@+id/tvBloodS"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Tidak Normal"
+                        android:text="Gula Darah"
                         android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvHasilBloods"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Hasil"
+                        android:textAlignment="center"
+                        android:textColor="@color/gray"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -355,36 +409,59 @@
                         android:id="@+id/tvHeartRate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Tidak Normal"
+                        android:text="Detak Jantung"
                         android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvHasilHeartRate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Hasil"
+                        android:textAlignment="center"
+                        android:textColor="@color/gray"
                         android:textStyle="bold" />
                 </LinearLayout>
 
             </TableRow>
         </TableLayout>
-        <Button
-            android:id="@+id/btnRisk"
-            android:layout_width="0dp"
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cek Resiko!"
-            android:layout_marginTop="24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintWidth_percent="0.8"
-            tools:ignore="MissingConstraints" />
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:visibility="visible"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                tools:listitem="@layout/item_article" />
+        </LinearLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <ImageView
         android:id="@+id/fabChatbot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:src="@drawable/chatbot"
+
+        android:scaleType="centerInside"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_chat"
-        android:background="@drawable/fab_no_top_left_radius" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,9 +9,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bangkit.pedulibumil.chatbot.ChatbotActivity
-import com.bangkit.pedulibumil.databinding.FragmentHomeBinding
 import com.bangkit.pedulibumil.network.ApiClient
 import com.bangkit.pedulibumil.risk.RiskActivity
+import com.bangkit.pedulibumil.databinding.FragmentHomeBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -87,7 +87,7 @@ class HomeFragment : Fragment() {
                     val data = result["data"] as? Map<*, *>
                     val riskCategory = data?.get("risk_category")?.toString() ?: "Unknown"
 
-                    binding.tvResiko.text = "Risk: $riskCategory"
+                    binding.tvResiko.text = "$riskCategory"
                 } else {
                     Log.e("HomeFragment", "Failed to fetch prediction: ${response.errorBody()?.string()}")
                     Toast.makeText(
@@ -118,4 +118,5 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }
