@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FCF5EE"
+    android:background="@color/white"
     android:padding="16dp"
     tools:context=".auth.LoginActivity">
 
@@ -27,7 +27,7 @@
             android:id="@+id/welcomeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome to Peduli Bumil"
+            android:text="Selamat Datang Di Peduli Bumil"
             android:textColor="#FF80B2"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -108,7 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:backgroundTint="#FFB6C1"
-            android:text="LOGIN"
+            android:text="MASUK"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"

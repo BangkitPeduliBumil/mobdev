@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FCF5EE"
+    android:background="@color/white"
     android:padding="16dp">
 
     <!-- Title (App Name) -->
@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<!--    &lt;!&ndash; Profile Icon &ndash;&gt;-->
+    <!--    &lt;!&ndash; Profile Icon &ndash;&gt;-->
     <ImageView
         android:id="@+id/imgProfileIcon"
         android:layout_width="279dp"
@@ -73,8 +73,8 @@
         android:layout_marginTop="24dp"
         android:backgroundTint="@color/pink_pastel"
         android:text="@string/register"
-        android:textStyle="bold"
         android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/etPassword"
