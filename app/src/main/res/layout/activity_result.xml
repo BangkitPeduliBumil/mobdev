@@ -20,10 +20,13 @@
 
     <Button
         android:id="@+id/btnSave"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Save" />
+        app:layout_constraintTop_toBottomOf="@id/btnClose"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Simpan" />
 
     <Button
         android:id="@+id/btnClose"
