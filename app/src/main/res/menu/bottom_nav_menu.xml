@@ -12,12 +12,12 @@
         android:title="@string/title_article" />
 
     <item
-        android:id="@+id/navigation_settings"
-        android:icon="@drawable/ic_settings"
-        android:title="@string/title_settings" />
+        android:id="@+id/navigation_history"
+        android:icon="@drawable/ic_person"
+        android:title="@string/title_history" />
 
     <item
-        android:id="@+id/navigation_history"
+        android:id="@+id/navigation_settings"
         android:icon="@drawable/ic_settings"
         android:title="@string/title_settings" />
 
