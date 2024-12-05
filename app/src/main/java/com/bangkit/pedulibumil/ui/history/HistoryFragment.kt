@@ -1,11 +1,16 @@
 package com.bangkit.pedulibumil.ui.history
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.pedulibumil.R
+import com.bangkit.pedulibumil.history.HistoryAdapter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,13 +35,31 @@ class HistoryFragment : Fragment() {
         }
     }
 
+    private lateinit var historyAdapter: HistoryAdapter
+    private lateinit var historyViewModel: HistoryViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_history, container, false)
+        val view = inflater.inflate(R.layout.fragment_history, container, false)
+
+        // Setup RecyclerView
+        val recyclerView = view.findViewById<RecyclerView>(R.id.rvHistory)
+        historyAdapter = HistoryAdapter()
+        recyclerView.adapter = historyAdapter
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        // Setup ViewModel
+        historyViewModel = ViewModelProvider(this)[HistoryViewModel::class.java]
+        historyViewModel.allHistory.observe(viewLifecycleOwner) { historyList ->
+            Log.d("HistoryFragment", "Data received: ${historyList.size}")
+            historyAdapter.setData(historyList)
+        }
+
+        return view
     }
+
 
     companion object {
         /**

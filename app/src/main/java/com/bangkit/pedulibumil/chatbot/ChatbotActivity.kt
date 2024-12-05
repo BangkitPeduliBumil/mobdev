@@ -1,7 +1,9 @@
 package com.bangkit.pedulibumil.chatbot
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
@@ -16,7 +18,6 @@ class ChatbotActivity : AppCompatActivity() {
 
         // WebView setup
         val webView: WebView = findViewById(R.id.webView)
-        webView.webViewClient = WebViewClient() // Keep navigation inside WebView
         webView.settings.apply {
             javaScriptEnabled = true
             domStorageEnabled = true
@@ -25,7 +26,24 @@ class ChatbotActivity : AppCompatActivity() {
             displayZoomControls = false
         }
 
-        // Load URL
+        // Set WebViewClient to handle navigation
+        webView.webViewClient = object : WebViewClient() {
+            override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
+                val url = request.url.toString()
+
+                // Check if the URL is external
+                return if (url.startsWith("http://") || url.startsWith("https://")) {
+                    // Open external links in a browser
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                    startActivity(intent)
+                    true // Indicate we handled the URL
+                } else {
+                    false // Allow WebView to load the URL
+                }
+            }
+        }
+
+        // Load the chatbot URL
         webView.loadUrl("https://glowyguide.com/pedulibumil/chatbot.html")
 
         // Back Button FAB setup
