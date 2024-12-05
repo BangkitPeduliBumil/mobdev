@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bangkit.pedulibumil.BuildConfig
 import com.bangkit.pedulibumil.databinding.FragmentArticleBinding
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -32,7 +33,7 @@ class ArticleFragment : Fragment() {
 
         // Setup Retrofit
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://serpapi.com/")
+            .baseUrl(BuildConfig.ARTICLE_API_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val service = retrofit.create(ArticleService::class.java)
@@ -45,9 +46,7 @@ class ArticleFragment : Fragment() {
 
         viewModel.articles.observe(viewLifecycleOwner) { articles ->
             if (articles != null) {
-
                 binding.rvArticles.adapter = ArticleAdapter(articles) { articleLink ->
-                    // Membuka link artikel
                     val intent = Intent(Intent.ACTION_VIEW).apply {
                         data = Uri.parse(articleLink)
                     }
