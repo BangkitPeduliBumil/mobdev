@@ -18,6 +18,8 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "NEWS_API_KEY", "\"${project.findProperty("NEWS_API_KEY") ?: ""}\"")
+        buildConfigField("String", "BASE_URL", "\"https://backend-api-511713702149.asia-southeast2.run.app/\"")
+        buildConfigField("String", "ARTICLE_API_URL", "\"https://serpapi.com/\"")
     }
 
     signingConfigs {
