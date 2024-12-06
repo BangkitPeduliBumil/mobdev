@@ -27,7 +27,7 @@ class ResultActivity : AppCompatActivity() {
 
         historyViewModel = ViewModelProvider(this).get(HistoryViewModel::class.java)
 
-        tvRiskCategory.text = "Risk Category: $riskCategory"
+        tvRiskCategory.text = "$riskCategory"
 
         btnSave.setOnClickListener {
             val currentTimestamp = System.currentTimeMillis()

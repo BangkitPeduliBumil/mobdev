@@ -102,8 +102,9 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="20dp"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="140dp">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -136,7 +137,7 @@
                             android:id="@+id/ivTB"
                             android:layout_width="49dp"
                             android:layout_height="47dp"
-                            android:src="@drawable/ic_height"
+                            android:src="@drawable/body_mass_index"
                             app:layout_constraintBottom_toBottomOf="@+id/bgTB"
                             app:layout_constraintEnd_toEndOf="@+id/bgTB"
                             app:layout_constraintStart_toStartOf="@+id/bgTB"
@@ -144,15 +145,15 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
-                        android:id="@+id/tvTB"
+                        android:id="@+id/tvBmi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Tinggi Badan"
+                        android:text="Index Massa\nTubuh"
                         android:textAlignment="center"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tvHasilTB"
+                        android:id="@+id/tvHasilBmi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Hasil"
@@ -187,7 +188,7 @@
                             android:id="@+id/ivBB"
                             android:layout_width="49dp"
                             android:layout_height="47dp"
-                            android:src="@drawable/ic_weight"
+                            android:src="@drawable/pressure"
                             app:layout_constraintBottom_toBottomOf="@+id/bgBB"
                             app:layout_constraintEnd_toEndOf="@+id/bgBB"
                             app:layout_constraintStart_toStartOf="@+id/bgBB"
@@ -195,15 +196,15 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
-                        android:id="@+id/tvBB"
+                        android:id="@+id/tvSystolic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Berat Badan"
+                        android:text="Tekanan Darah\nSystolic"
                         android:textAlignment="center"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tvHasilBB"
+                        android:id="@+id/tvHasilSystolic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Hasil"
@@ -235,10 +236,10 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
-                            android:id="@+id/ivSuhu"
+                            android:id="@+id/ivDiastolic"
                             android:layout_width="49dp"
                             android:layout_height="47dp"
-                            android:src="@drawable/ic_thermometer"
+                            android:src="@drawable/ic_blood_pressure"
                             app:layout_constraintBottom_toBottomOf="@+id/bgSuhu"
                             app:layout_constraintEnd_toEndOf="@+id/bgSuhu"
                             app:layout_constraintStart_toStartOf="@+id/bgSuhu"
@@ -246,15 +247,15 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
-                        android:id="@+id/tvSuhu"
+                        android:id="@+id/tvDiastolic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Suhu Tubuh"
+                        android:text="Tekanan Darah\nDiastolic"
                         android:textAlignment="center"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tvHasilSuhu"
+                        android:id="@+id/tvHasilDiastolic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Hasil"
@@ -293,10 +294,10 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
-                            android:id="@+id/ivTensi"
+                            android:id="@+id/ivGulaDarah"
                             android:layout_width="49dp"
                             android:layout_height="47dp"
-                            android:src="@drawable/ic_blood_pressure"
+                            android:src="@drawable/ic_diabetes"
                             app:layout_constraintBottom_toBottomOf="@+id/bgTensi"
                             app:layout_constraintEnd_toEndOf="@+id/bgTensi"
                             app:layout_constraintStart_toStartOf="@+id/bgTensi"
@@ -304,15 +305,15 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
-                        android:id="@+id/tvTensi"
+                        android:id="@+id/tvGulaDarah"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Tekanan Darah"
+                        android:text="Gula Darah"
                         android:textAlignment="center"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tvHasilTensi"
+                        android:id="@+id/tvHasilGulaDarah"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Hasil"
@@ -344,10 +345,10 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
-                            android:id="@+id/ivBloodS"
+                            android:id="@+id/ivSuhu"
                             android:layout_width="49dp"
                             android:layout_height="47dp"
-                            android:src="@drawable/ic_diabetes"
+                            android:src="@drawable/ic_thermometer"
                             app:layout_constraintBottom_toBottomOf="@+id/bgBloodS"
                             app:layout_constraintEnd_toEndOf="@+id/bgBloodS"
                             app:layout_constraintStart_toStartOf="@+id/bgBloodS"
@@ -355,15 +356,15 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
-                        android:id="@+id/tvBloodS"
+                        android:id="@+id/tvSuhu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Gula Darah"
+                        android:text="Suhu Tubuh"
                         android:textAlignment="center"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tvHasilBloods"
+                        android:id="@+id/tvHasilSuhu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Hasil"
