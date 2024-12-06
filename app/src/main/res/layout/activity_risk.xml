@@ -1,188 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".risk.RiskActivity">
 
-<!--Tinggi Badan-->
-    <Button
-        android:id="@+id/btnSubmit"
+    <ImageButton
+        android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="30dp"
-        android:text="Submit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputDJ" />
+        android:layout_margin="5dp"
+        android:src="@drawable/ic_back"
+        android:background="@null"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputTB"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:hint="Tinggi Badan"
-        app:endIconMode="clear_text"
-        app:helperText="Wajib Di isi*"
-        app:helperTextTextColor="@color/design_default_color_error"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/btnBack"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/TB"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/pink_pastel"
-            android:inputType="numberDecimal"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
 
-<!--Berat Badan-->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputBB"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:hint="Berat Badan"
-        app:endIconMode="clear_text"
-        app:helperText="Wajib Di isi*"
-        app:helperTextTextColor="@color/design_default_color_error"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputTB">
+            <!-- Tinggi Badan -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputTB"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tinggi Badan"
+                app:endIconMode="clear_text"
+                app:helperText="Wajib Di isi*"
+                app:helperTextTextColor="@color/design_default_color_error"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/BB"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/pink_pastel"
-            android:inputType="numberDecimal"/>
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/TB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/pink_pastel"
+                    android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-<!--Suhu-->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputSuhu"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:hint="Suhu"
-        app:endIconMode="clear_text"
-        app:helperText="Wajib Di isi*"
-        app:helperTextTextColor="@color/design_default_color_error"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputBB">
+            <!-- Berat Badan -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputBB"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Berat Badan"
+                app:endIconMode="clear_text"
+                app:helperText="Wajib Di isi*"
+                app:helperTextTextColor="@color/design_default_color_error"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputTB">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/suhu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/pink_pastel"
-            android:inputType="numberDecimal"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <!-- Systolic Blood Pressure -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputSystolic"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:hint="Tekanan Darah Systolic"
-        app:endIconMode="clear_text"
-        app:helperText="Wajib Di isi*"
-        app:helperTextTextColor="@color/design_default_color_error"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputSuhu">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/BB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/pink_pastel"
+                    android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/systolic"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/pink_pastel"
-            android:inputType="numberDecimal"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            <!-- Suhu -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputSuhu"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Suhu"
+                app:endIconMode="clear_text"
+                app:helperText="Wajib Di isi*"
+                app:helperTextTextColor="@color/design_default_color_error"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputBB">
 
-    <!-- Diastolic Blood Pressure -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputDiastolic"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:hint="Tekanan Darah Diastolic"
-        app:endIconMode="clear_text"
-        app:helperText="Wajib Di isi*"
-        app:helperTextTextColor="@color/design_default_color_error"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputSystolic">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/suhu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/pink_pastel"
+                    android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/diastolic"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/pink_pastel"
-            android:inputType="numberDecimal"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            <!-- Tekanan Darah Systolic -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputSystolic"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Tekanan Darah Systolic"
+                app:endIconMode="clear_text"
+                app:helperText="Wajib Di isi*"
+                app:helperTextTextColor="@color/design_default_color_error"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputSuhu">
 
-    <!--Gula Darah-->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputGD"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:hint="Gula Darah"
-        app:endIconMode="clear_text"
-        app:helperText="Wajib Di isi*"
-        app:helperTextTextColor="@color/design_default_color_error"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputDiastolic">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/systolic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/pink_pastel"
+                    android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/GD"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/pink_pastel"
-            android:inputType="numberDecimal"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            <!-- Tekanan Darah Diastolic -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputDiastolic"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Tekanan Darah Diastolic"
+                app:endIconMode="clear_text"
+                app:helperText="Wajib Di isi*"
+                app:helperTextTextColor="@color/design_default_color_error"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputSystolic">
 
-    <!--Detak Jantung-->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputDJ"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:hint="Detak Jantung"
-        app:endIconMode="clear_text"
-        app:helperText="Wajib Di isi*"
-        app:helperTextTextColor="@color/design_default_color_error"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputGD">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/diastolic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/pink_pastel"
+                    android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/DJ"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/pink_pastel"
-            android:inputType="numberDecimal"/>
+            <!-- Gula Darah -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputGD"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Gula Darah"
+                app:endIconMode="clear_text"
+                app:helperText="Wajib Di isi*"
+                app:helperTextTextColor="@color/design_default_color_error"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputDiastolic">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/GD"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/pink_pastel"
+                    android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <!-- Detak Jantung -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputDJ"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Detak Jantung"
+                app:endIconMode="clear_text"
+                app:helperText="Wajib Di isi*"
+                app:helperTextTextColor="@color/design_default_color_error"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputGD">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/DJ"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/pink_pastel"
+                    android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Submit Button -->
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="30dp"
+                android:text="Submit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputDJ" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
