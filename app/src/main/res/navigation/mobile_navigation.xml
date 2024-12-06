@@ -12,12 +12,6 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_article"
-        android:name="com.bangkit.pedulibumil.ui.article.ArticleFragment"
-        android:label="@string/title_article"
-        tools:layout="@layout/fragment_article" />
-
-    <fragment
         android:id="@+id/navigation_history"
         android:name="com.bangkit.pedulibumil.ui.history.HistoryFragment"
         android:label="@string/title_history"
