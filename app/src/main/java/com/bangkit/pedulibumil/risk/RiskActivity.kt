@@ -4,8 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bangkit.pedulibumil.MainActivity
 import com.bangkit.pedulibumil.R
 import com.bangkit.pedulibumil.model.PredictionResponse
 import com.bangkit.pedulibumil.network.ApiClient
@@ -24,6 +26,14 @@ class RiskActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_risk)
+
+        val btnBack: ImageButton = findViewById(R.id.btnBack)
+        btnBack.setOnClickListener {
+            // Intent to MainActivity
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         val btnSubmit = findViewById<Button>(R.id.btnSubmit)
         val inputTB = findViewById<TextInputEditText>(R.id.TB)
