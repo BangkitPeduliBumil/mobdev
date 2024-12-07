@@ -93,8 +93,10 @@ class HomeFragment : Fragment() {
     private fun loadData() {
         val userId = FirebaseAuth.getInstance().currentUser?.uid
         if (userId != null) {
-            val ref = db.collection("user").document(userId)
-            ref.get()
+            val userRef = db.collection("user").document(userId)
+
+            // Fetch user document
+            userRef.get()
                 .addOnSuccessListener { document ->
                     if (document != null) {
                         val nama = document.data?.get("nama")?.toString()
@@ -103,81 +105,33 @@ class HomeFragment : Fragment() {
                         val lastUpdated = document.data?.get("lastUpdated")?.toString()
 
                         if (usiakandungan != null) {
-                            val updatedKandungan = checkAndUpdateKandungan(usiakandungan, lastUpdated, ref)
+                            val updatedKandungan = checkAndUpdateKandungan(usiakandungan, lastUpdated, userRef)
 
                             binding.tvName.text = "Hi $nama"
                             binding.tvUmur.text = "$umur Tahun"
                             binding.tvKandungan.text = "$updatedKandungan minggu kehamilan"
-                        }
 
-                        nama?.let { fetchLatestPrediction(it) }
+                            nama?.let { fetchLatestPrediction(it) }
+                        }
                     }
                 }
                 .addOnFailureListener {
-                    Toast.makeText(requireContext(), "Failed to fetch data!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Gagal mengambil data pengguna!", Toast.LENGTH_SHORT).show()
                 }
-        } else {
-            Toast.makeText(requireContext(), "User not logged in", Toast.LENGTH_SHORT).show()
-        }
 
-        binding.fabChatbot.setOnClickListener {
-            val intent = Intent(requireContext(), ChatbotActivity::class.java)
-            startActivity(intent)
-        }
-
-        binding.btnRisk.setOnClickListener {
-            val intent = Intent(requireContext(), RiskActivity::class.java)
-            startActivity(intent)
-        }
-    }
-
-    private fun checkAndUpdateKandungan(currentKandungan: Int, lastUpdated: String?, ref: DocumentReference): Int {
-        val calendar = Calendar.getInstance()
-        val today = calendar.time
-        val dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
-
-        // Jika hari ini bukan Senin, langsung return usia kandungan
-        if (dayOfWeek != Calendar.MONDAY) return currentKandungan
-
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        val lastUpdatedDate = lastUpdated?.let { dateFormat.parse(it) }
-
-        // Jika `lastUpdated` belum diatur atau sudah lebih dari 7 hari sejak Senin terakhir
-        if (lastUpdatedDate == null || isNewWeek(lastUpdatedDate, today)) {
-            val newKandungan = currentKandungan + 1
-
-            // Perbarui data usia kandungan dan tanggal pembaruan terakhir di Firestore
-            ref.update(mapOf(
-                "usiakandungan" to newKandungan,
-                "lastUpdated" to dateFormat.format(today)
-            )).addOnSuccessListener {
-                Log.d("HomeFragment", "Usia kandungan updated to $newKandungan")
-            }.addOnFailureListener {
-                Log.e("HomeFragment", "Failed to update usia kandungan", it)
+            binding.fabChatbot.setOnClickListener {
+                val intent = Intent(requireContext(), ChatbotActivity::class.java)
+                startActivity(intent)
             }
 
-            return newKandungan
+            binding.btnRisk.setOnClickListener {
+                val intent = Intent(requireContext(), RiskActivity::class.java)
+                startActivity(intent)
+            }
+        } else {
+            Toast.makeText(requireContext(), "Pengguna tidak masuk", Toast.LENGTH_SHORT).show()
         }
-
-        return currentKandungan
     }
-
-    private fun isNewWeek(lastUpdatedDate: Date, today: Date): Boolean {
-        val calendar = Calendar.getInstance()
-
-        // Set tanggal ke Senin minggu terakhir dari `lastUpdatedDate`
-        calendar.time = lastUpdatedDate
-        calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
-        val lastMonday = calendar.time
-
-        // Set tanggal ke Senin minggu ini
-        calendar.time = today
-        calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
-        val thisMonday = calendar.time
-
-        return lastMonday.before(thisMonday)
-    }
-
 
     private fun fetchLatestPrediction(name: String) {
         ApiClient.instance.getLatestPrediction(name).enqueue(object : Callback<Map<String, Any>> {
@@ -189,8 +143,18 @@ class HomeFragment : Fragment() {
                     val result = response.body()!!
                     val data = result["data"] as? Map<*, *>
                     val riskCategory = data?.get("risk_category")?.toString() ?: "Unknown"
+                    val predictions = data?.get("input") as? List<Float> ?: emptyList()
 
+                    // Set data ke view
                     binding.tvResiko.text = riskCategory
+                    if (predictions.size >= 6) {
+                        binding.tvHasilSuhu.text = predictions[1].toString()
+                        binding.tvHasilHeartRate.text = predictions[2].toString()
+                        binding.tvHasilSystolic.text = predictions[3].toString()
+                        binding.tvHasilDiastolic.text = predictions[4].toString()
+                        binding.tvHasilBmi.text = predictions[5].toString()
+                        binding.tvHasilGulaDarah.text = predictions[6].toString()
+                    }
                 } else {
                     Log.e("HomeFragment", "Failed to fetch prediction: ${response.errorBody()?.string()}")
                     Toast.makeText(
@@ -210,6 +174,48 @@ class HomeFragment : Fragment() {
                 ).show()
             }
         })
+    }
+
+    private fun checkAndUpdateKandungan(currentKandungan: Int, lastUpdated: String?, ref: DocumentReference): Int {
+        val calendar = Calendar.getInstance()
+        val today = calendar.time
+        val dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
+
+        if (dayOfWeek != Calendar.MONDAY) return currentKandungan
+
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val lastUpdatedDate = lastUpdated?.let { dateFormat.parse(it) }
+
+        if (lastUpdatedDate == null || isNewWeek(lastUpdatedDate, today)) {
+            val newKandungan = currentKandungan + 1
+
+            ref.update(mapOf(
+                "usiakandungan" to newKandungan,
+                "lastUpdated" to dateFormat.format(today)
+            )).addOnSuccessListener {
+                Log.d("HomeFragment", "Usia kandungan updated to $newKandungan")
+            }.addOnFailureListener {
+                Log.e("HomeFragment", "Failed to update usia kandungan", it)
+            }
+
+            return newKandungan
+        }
+
+        return currentKandungan
+    }
+
+    private fun isNewWeek(lastUpdatedDate: Date, today: Date): Boolean {
+        val calendar = Calendar.getInstance()
+
+        calendar.time = lastUpdatedDate
+        calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
+        val lastMonday = calendar.time
+
+        calendar.time = today
+        calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
+        val thisMonday = calendar.time
+
+        return lastMonday.before(thisMonday)
     }
 
     override fun onResume() {

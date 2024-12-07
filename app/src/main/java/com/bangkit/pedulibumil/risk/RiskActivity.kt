@@ -78,7 +78,7 @@ class RiskActivity : AppCompatActivity() {
 
                         // Hitung BMI
                         val tinggiMeter = tinggiBadan / 100
-                        val bmi = beratBadan / (tinggiMeter * tinggiMeter)
+                        val bmi = beratBadan / tinggiMeter
 
                         // Kirim data ke API (urutan harus sesuai dengan yang diharapkan API)
                         val inputs = listOf(
