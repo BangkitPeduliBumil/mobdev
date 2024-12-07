@@ -106,7 +106,7 @@ class HomeFragment : Fragment() {
                             val updatedKandungan = checkAndUpdateKandungan(usiakandungan, lastUpdated, ref)
 
                             binding.tvName.text = "Hi $nama"
-                            binding.tvUmur.text = umur
+                            binding.tvUmur.text = "$umur Tahun"
                             binding.tvKandungan.text = "$updatedKandungan minggu kehamilan"
                         }
 
