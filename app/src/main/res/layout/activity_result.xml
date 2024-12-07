@@ -22,32 +22,100 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btnSave"
+        <!-- CardView: Alasan -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardAlasan"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Simpan"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toBottomOf="@+id/tvRiskCategory">
 
-        <Button
-            android:id="@+id/btnClose"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/pink_pastel"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tvAlasanTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alasan:"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvAlasanContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Konten Alasan Disini"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- CardView: Langkah/Perawatan -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardLangkah"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Tutup"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnSave" />
+            app:layout_constraintTop_toBottomOf="@+id/cardAlasan">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/pink_pastel"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tvLangkahTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Langkah/Perawatan:"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvLangkahContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Konten Perawatan Disini"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tvPesanPengingat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pesan Pengingat !"
+            android:textColor="@android:color/holo_orange_light"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardLangkah" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:inputType="textMultiLine"
             android:text="Jangan lupa baca artikel rekomendasi kami, dirancang khusus untuk mendukung kesehatan kehamilan Anda!"
             android:textAlignment="center"
@@ -55,89 +123,32 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/tvPesanPengingat" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:inputType="textMultiLine"
             android:text="Temukan jawaban cepat dan tepat dengan bertanya langsung ke chatbot kami!"
             android:textAlignment="center"
             android:textSize="16dp"
             android:textStyle="bold"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pesan Pengingat !"
-            android:textColor="@android:color/holo_orange_light"
-            android:textSize="16sp"
-            android:layout_marginTop="24dp"
-            android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvLangkahContent" />
-
-        <!-- Section Title: Alasan -->
-        <TextView
-            android:id="@+id/tvAlasanTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alasan:"
-            android:layout_marginTop="16dp"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvRiskCategory" />
-
-        <TextView
-            android:id="@+id/tvAlasanContent"
+        <Button
+            android:id="@+id/btnSave"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Konten Alasan Disini"
-            android:textColor="@android:color/black"
-            android:layout_marginTop="8dp"
-            android:textSize="16sp"
-            android:textAlignment="center"
+            android:text="Simpan"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvAlasanTitle" />
-
-        <!-- Section Title: Langkah/Perawatan -->
-        <TextView
-            android:id="@+id/tvLangkahTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Langkah/Perawatan:"
-            android:textSize="18sp"
-            android:layout_marginTop="16dp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.443"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvAlasanContent" />
-        <!-- Langkah Content -->
-        <TextView
-            android:id="@+id/tvLangkahContent"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Konten Perawatan Disini"
-            android:textSize="16sp"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvLangkahTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </ScrollView>
