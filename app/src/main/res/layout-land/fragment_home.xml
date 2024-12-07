@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFC0D0"
+    tools:context=".ui.home.HomeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Hi Username TextView -->
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hi_username"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tvUmur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/usia"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/gray" />
+
+            <TextView
+                android:id="@+id/tvKandungan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/usia_kehamilan"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/gray" />
+        </LinearLayout>
+
+        <!-- Resiko Kehamilan -->
+        <TextView
+            android:id="@+id/tvResiko"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="30dp"
+            android:text="Resiko Kehamilan"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnRisk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:backgroundTint="@color/white"
+            android:text="Cek Resiko!"
+            android:textColor="@color/pink_pastel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvResiko"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <!-- Artikel dan Table Layout -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bottom_background_light"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <ImageView
+                android:id="@+id/fabChatbot"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginEnd="20dp"
+
+                android:layout_marginBottom="20dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/chatbot"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:visibility="visible"
+                app:layout_constraintTop_toBottomOf="@+id/tvArticleTitle">
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="gone" />
+
+                <!-- RecyclerView untuk daftar artikel -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvArticles"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    tools:listitem="@layout/item_article"
+                    android:padding="8dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvArticleTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Artikel"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+            <TableLayout
+                android:id="@+id/tableLayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_button_risk">
+
+                            <ImageView
+                                android:id="@+id/bgTB"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_margin="8dp"
+                                android:src="@drawable/circle_risk_bg"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/ivTB"
+                                android:layout_width="49dp"
+                                android:layout_height="47dp"
+                                android:src="@drawable/body_mass_index"
+                                app:layout_constraintBottom_toBottomOf="@+id/bgTB"
+                                app:layout_constraintEnd_toEndOf="@+id/bgTB"
+                                app:layout_constraintStart_toStartOf="@+id/bgTB"
+                                app:layout_constraintTop_toTopOf="@+id/bgTB" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/tvBmi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Index Massa\nTubuh"
+                            android:textAlignment="center"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvHasilBmi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Hasil"
+                            android:textAlignment="center"
+                            android:textColor="@color/gray"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_button_risk">
+
+                            <ImageView
+                                android:id="@+id/bgBB"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_margin="8dp"
+                                android:src="@drawable/circle_risk_bg"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/ivBB"
+                                android:layout_width="49dp"
+                                android:layout_height="47dp"
+                                android:src="@drawable/pressure"
+                                app:layout_constraintBottom_toBottomOf="@+id/bgBB"
+                                app:layout_constraintEnd_toEndOf="@+id/bgBB"
+                                app:layout_constraintStart_toStartOf="@+id/bgBB"
+                                app:layout_constraintTop_toTopOf="@+id/bgBB" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/tvSystolic"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Tekanan Darah\nSystolic"
+                            android:textAlignment="center"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvHasilSystolic"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Hasil"
+                            android:textAlignment="center"
+                            android:textColor="@color/gray"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_button_risk">
+
+                            <ImageView
+                                android:id="@+id/bgSuhu"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_margin="8dp"
+                                android:src="@drawable/circle_risk_bg"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/ivDiastolic"
+                                android:layout_width="49dp"
+                                android:layout_height="47dp"
+                                android:src="@drawable/ic_blood_pressure"
+                                app:layout_constraintBottom_toBottomOf="@+id/bgSuhu"
+                                app:layout_constraintEnd_toEndOf="@+id/bgSuhu"
+                                app:layout_constraintStart_toStartOf="@+id/bgSuhu"
+                                app:layout_constraintTop_toTopOf="@+id/bgSuhu" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/tvDiastolic"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Tekanan Darah\nDiastolic"
+                            android:textAlignment="center"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvHasilDiastolic"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Hasil"
+                            android:textAlignment="center"
+                            android:textColor="@color/gray"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_button_risk">
+
+                            <ImageView
+                                android:id="@+id/bgTensi"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_margin="8dp"
+                                android:src="@drawable/circle_risk_bg"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/ivGulaDarah"
+                                android:layout_width="49dp"
+                                android:layout_height="47dp"
+                                android:src="@drawable/ic_diabetes"
+                                app:layout_constraintBottom_toBottomOf="@+id/bgTensi"
+                                app:layout_constraintEnd_toEndOf="@+id/bgTensi"
+                                app:layout_constraintStart_toStartOf="@+id/bgTensi"
+                                app:layout_constraintTop_toTopOf="@+id/bgTensi" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/tvGulaDarah"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Gula Darah"
+                            android:textAlignment="center"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvHasilGulaDarah"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Hasil"
+                            android:textAlignment="center"
+                            android:textColor="@color/gray"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_button_risk">
+
+                            <ImageView
+                                android:id="@+id/bgBloodS"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_margin="8dp"
+                                android:src="@drawable/circle_risk_bg"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/ivSuhu"
+                                android:layout_width="49dp"
+                                android:layout_height="47dp"
+                                android:src="@drawable/ic_thermometer"
+                                app:layout_constraintBottom_toBottomOf="@+id/bgBloodS"
+                                app:layout_constraintEnd_toEndOf="@+id/bgBloodS"
+                                app:layout_constraintStart_toStartOf="@+id/bgBloodS"
+                                app:layout_constraintTop_toTopOf="@+id/bgBloodS" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/tvSuhu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Suhu Tubuh"
+                            android:textAlignment="center"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvHasilSuhu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Hasil"
+                            android:textAlignment="center"
+                            android:textColor="@color/gray"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_button_risk">
+
+                            <ImageView
+                                android:id="@+id/bgHeartRate"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_margin="8dp"
+                                android:src="@drawable/circle_risk_bg"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/ivHeartRate"
+                                android:layout_width="49dp"
+                                android:layout_height="47dp"
+                                android:src="@drawable/ic_heartbeat"
+                                app:layout_constraintBottom_toBottomOf="@+id/bgHeartRate"
+                                app:layout_constraintEnd_toEndOf="@+id/bgHeartRate"
+                                app:layout_constraintStart_toStartOf="@+id/bgHeartRate"
+                                app:layout_constraintTop_toTopOf="@+id/bgHeartRate" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/tvHeartRate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Detak Jantung"
+                            android:textAlignment="center"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvHasilHeartRate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Hasil"
+                            android:textAlignment="center"
+                            android:textColor="@color/gray"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </TableRow>
+            </TableLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

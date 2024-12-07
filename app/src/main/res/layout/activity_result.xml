@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="Risk Category"
-            android:textSize="30sp"
+            android:textSize="34sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,21 +26,22 @@
             android:id="@+id/btnSave"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/btnClose"
+            android:text="Simpan"
+            android:layout_marginTop="24dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="Simpan" />
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <Button
             android:id="@+id/btnClose"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:text="Tutup"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toBottomOf="@+id/btnSave" />
 
         <TextView
             android:id="@+id/textView3"
@@ -70,6 +71,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
+
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
@@ -77,10 +79,64 @@
             android:text="Pesan Pengingat !"
             android:textColor="@android:color/holo_orange_light"
             android:textSize="16sp"
+            android:layout_marginTop="24dp"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvLangkahContent" />
+
+        <!-- Section Title: Alasan -->
+        <TextView
+            android:id="@+id/tvAlasanTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alasan:"
+            android:layout_marginTop="16dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvRiskCategory" />
+
+        <TextView
+            android:id="@+id/tvAlasanContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Konten Alasan Disini"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAlasanTitle" />
+
+        <!-- Section Title: Langkah/Perawatan -->
+        <TextView
+            android:id="@+id/tvLangkahTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Langkah/Perawatan:"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.443"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAlasanContent" />
+        <!-- Langkah Content -->
+        <TextView
+            android:id="@+id/tvLangkahContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Konten Perawatan Disini"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvLangkahTitle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
