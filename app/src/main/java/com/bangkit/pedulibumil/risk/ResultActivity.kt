@@ -28,13 +28,28 @@ class ResultActivity : AppCompatActivity() {
         val tvAlasanContent = findViewById<TextView>(R.id.tvAlasanContent)
         val tvLangkahContent = findViewById<TextView>(R.id.tvLangkahContent)
         val btnSave = findViewById<Button>(R.id.btnSave)
-        val btnClose = findViewById<Button>(R.id.btnClose)
 
         // Inisialisasi ViewModel
         historyViewModel = ViewModelProvider(this).get(HistoryViewModel::class.java)
 
         // Tampilkan kategori risiko
         tvRiskCategory.text = riskCategory
+
+        // Atur warna berdasarkan kategori risiko
+        when (riskCategory) {
+            "Resiko Tinggi" -> {
+                tvRiskCategory.setTextColor(getColor(R.color.risk_high))
+            }
+            "Resiko Sedang" -> {
+                tvRiskCategory.setTextColor(getColor(R.color.risk_medium))
+            }
+            "Resiko Rendah" -> {
+                tvRiskCategory.setTextColor(getColor(R.color.risk_low))
+            }
+            else -> {
+                tvRiskCategory.setTextColor(getColor(R.color.black)) // Default warna hitam
+            }
+        }
 
         // Ambil alasan dan langkah sesuai kategori risiko
         val (alasan, langkah) = getRiskDetails(riskCategory)
@@ -51,14 +66,6 @@ class ResultActivity : AppCompatActivity() {
                 )
             )
             Toast.makeText(this, "Berhasil Disimpan", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, MainActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-            startActivity(intent)
-            finish()
-        }
-
-        // Tutup aktivitas dan kembali ke MainActivity
-        btnClose.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
             startActivity(intent)

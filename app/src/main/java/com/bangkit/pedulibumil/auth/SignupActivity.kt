@@ -59,33 +59,34 @@ class SignupActivity : AppCompatActivity() {
             val sEmail = etEmail.text.toString().trim()
             val sPassword = etPassword.text.toString().trim()
 
-            // Validate input
+            // Validasi input
             if (sEmail.isEmpty()) {
-                Toast.makeText(this, "Email cannot be empty", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Email tidak boleh kosong", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             if (!Patterns.EMAIL_ADDRESS.matcher(sEmail).matches()) {
-                Toast.makeText(this, "Please enter a valid email", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Masukkan email yang valid", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             if (sPassword.isEmpty()) {
-                Toast.makeText(this, "Password cannot be empty", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Password tidak boleh kosong", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if (sPassword.length < 6) {
-                Toast.makeText(this, "Password must be at least 6 characters", Toast.LENGTH_SHORT).show()
+            if (sPassword.length < 8) {
+                Toast.makeText(this, "Password harus memiliki minimal 8 karakter", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Proceed to OTP activity
+            // Lanjutkan ke OtpActivity jika validasi berhasil
             val intent = Intent(this@SignupActivity, OtpActivity::class.java)
-            intent.putExtra("email", sEmail) // Mengirim email ke OtpActivity
-            intent.putExtra("pass", sPassword) // Mengirim password ke OtpActivity
+            intent.putExtra("email", sEmail)
+            intent.putExtra("pass", sPassword)
             startActivity(intent)
         }
+
 
         // Set onClickListener for Google Sign-Up button
         btnGoogleSignUp.setOnClickListener {

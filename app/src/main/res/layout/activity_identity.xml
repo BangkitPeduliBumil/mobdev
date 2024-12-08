@@ -50,6 +50,14 @@
                 android:inputType="number"
                 android:layout_marginTop="16dp" />
 
+            <EditText
+                android:id="@+id/tvDateOfBirth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tanggal Lahir (ex : 2004-08-15"
+                android:inputType="date"
+                android:layout_marginTop="16dp" />
+
             <!-- Gestational Age Field -->
             <EditText
                 android:id="@+id/etKandungan"

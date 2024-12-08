@@ -52,7 +52,7 @@
             app:layout_constraintWidth_percent="0.8" />
 
         <!-- Password Input -->
-        <EditText
+        <com.bangkit.pedulibumil.util.CustomEditText
             android:id="@+id/etPassword"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:backgroundTint="@color/gray"
-            android:text="@string/register_link"
+            android:text="@string/login_link"
             android:textColor="#FF80B2"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
