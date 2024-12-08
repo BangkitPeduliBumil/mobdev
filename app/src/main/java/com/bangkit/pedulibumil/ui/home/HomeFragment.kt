@@ -152,7 +152,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-    // Memperbarui umur berdasarkan tanggal lahir
     private fun checkAndUpdateAge(tanggalLahir: String, ref: DocumentReference): Int {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         val birthDate = dateFormat.parse(tanggalLahir) ?: return 0
@@ -164,14 +163,19 @@ class HomeFragment : Fragment() {
             currentAge -= 1
         }
 
+        // Update age only if it's the user's birthday
         if (today.get(Calendar.DAY_OF_YEAR) == birthCalendar.get(Calendar.DAY_OF_YEAR)) {
-            ref.update("umur", currentAge + 1)
-                .addOnSuccessListener { Log.d("HomeFragment", "Umur diperbarui menjadi ${currentAge + 1}") }
+            val newAge = currentAge + 1 // Increment the age by 1
+            ref.update("umur", newAge)
+                .addOnSuccessListener { Log.d("HomeFragment", "Umur diperbarui menjadi $newAge") }
                 .addOnFailureListener { Log.e("HomeFragment", "Gagal memperbarui umur", it) }
+            return newAge
         }
 
         return currentAge
     }
+
+
 
     // Mengambil prediksi risiko terbaru dari server
     private fun fetchLatestPrediction(name: String) {
