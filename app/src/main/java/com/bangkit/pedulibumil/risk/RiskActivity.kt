@@ -55,7 +55,7 @@ class RiskActivity : AppCompatActivity() {
             .addOnSuccessListener { document ->
                 if (document != null) {
                     val name = document.getString("nama") ?: "Unknown"
-                    val age = document.getString("umur")?.toIntOrNull() ?: 0
+                    val age = document.getLong("umur")?.toInt() ?: 0
 
                     btnSubmit.setOnClickListener {
                         val tinggiBadan = inputTB.text.toString().toDoubleOrNull()

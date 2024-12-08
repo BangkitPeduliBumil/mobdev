@@ -10,4 +10,7 @@
     <color name="gray">#808080</color>
     <color name="light_gray">#CAC7C7</color>
     <color name="black">#000000</color>
+    <color name="risk_high">#FF0000</color> <!-- Merah -->
+    <color name="risk_medium">#FFA500</color> <!-- Kuning -->
+    <color name="risk_low">#008000</color> <!-- Hijau -->
 </resources>

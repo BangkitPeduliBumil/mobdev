@@ -1,10 +1,12 @@
 package com.bangkit.pedulibumil.auth
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bangkit.pedulibumil.MainActivity
@@ -12,11 +14,14 @@ import com.bangkit.pedulibumil.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-//test
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
+
 class IdentityActivity : AppCompatActivity() {
 
     private lateinit var etName: EditText
-    private lateinit var etAge: EditText
+    private lateinit var tvDateOfBirth: TextView
     private lateinit var etKandungan: EditText
     private lateinit var btnSubmit: Button
 
@@ -26,25 +31,32 @@ class IdentityActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_identity)
 
-        // Inisialisasi EditText dan Button
+        // Inisialisasi komponen UI
         etName = findViewById(R.id.etName)
-        etAge = findViewById(R.id.etAge)
+        tvDateOfBirth = findViewById(R.id.tvDateOfBirth)
         etKandungan = findViewById(R.id.etKandungan)
         btnSubmit = findViewById(R.id.btnSubmit)
 
-        // Set OnClickListener untuk tombol submit
+        // Tampilkan DatePicker saat tanggal lahir diklik
+        tvDateOfBirth.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            DatePickerDialog(this, { _, year, month, dayOfMonth ->
+                val selectedDate = "$year-${month + 1}-$dayOfMonth"
+                tvDateOfBirth.text = selectedDate
+            }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show()
+        }
+
         btnSubmit.setOnClickListener {
             val sName = etName.text.toString().trim()
-            val sAge = etAge.text.toString().trim()
+            val sDateOfBirth =  tvDateOfBirth.text.toString().trim()
             val sKandungan = etKandungan.text.toString().trim()
 
-            // Validasi input agar tidak kosong
             if (sName.isEmpty()) {
                 Toast.makeText(this, "Nama tidak boleh kosong", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (sAge.isEmpty()) {
-                Toast.makeText(this, "Umur tidak boleh kosong", Toast.LENGTH_SHORT).show()
+            if (sDateOfBirth.isEmpty()) {
+                Toast.makeText(this, "Tanggal lahir tidak boleh kosong", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             if (sKandungan.isEmpty()) {
@@ -52,32 +64,45 @@ class IdentityActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Membuat HashMap untuk data user
+            val age = calculateAge(sDateOfBirth)
+
             val userMap = hashMapOf(
                 "nama" to sName,
-                "umur" to sAge,
+                "tanggal_lahir" to sDateOfBirth,
+                "umur" to age,
                 "usiakandungan" to sKandungan
             )
 
-            // Mendapatkan userId dari FirebaseAuth
             val userId = FirebaseAuth.getInstance().currentUser?.uid
             if (userId == null) {
                 Toast.makeText(this, "User tidak ditemukan", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Menyimpan data ke Firestore
             db.collection("user").document(userId).set(userMap)
                 .addOnSuccessListener {
                     Toast.makeText(this, "Data berhasil disimpan", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
-                    finish() // Optional: finish SignupActivity so the user can't go back to it
+                    finish()
                 }
                 .addOnFailureListener { e ->
                     Log.e("Identity", "Error saving data", e)
                     Toast.makeText(this, "Gagal menyimpan data", Toast.LENGTH_SHORT).show()
                 }
         }
+    }
+
+    private fun calculateAge(dateOfBirth: String): Int {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val birthDate = dateFormat.parse(dateOfBirth) ?: return 0
+        val today = Calendar.getInstance()
+        val birthCalendar = Calendar.getInstance().apply { time = birthDate }
+
+        var age = today.get(Calendar.YEAR) - birthCalendar.get(Calendar.YEAR)
+        if (today.get(Calendar.DAY_OF_YEAR) < birthCalendar.get(Calendar.DAY_OF_YEAR)) {
+            age -= 1
+        }
+        return age
     }
 }

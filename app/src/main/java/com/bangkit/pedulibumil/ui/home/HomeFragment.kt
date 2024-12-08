@@ -48,16 +48,24 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Memuat data pengguna dari Firestore
         loadData()
 
+        // Menyiapkan ViewModel untuk artikel
         setupViewModel()
+
+        // Menyiapkan RecyclerView untuk daftar artikel
         setupRecyclerView()
+
+        // Mengamati perubahan data dari ViewModel
         observeViewModel()
 
-        // Fetch articles
+        // Memulai pengambilan artikel dengan kata kunci tertentu
         viewModel.fetchArticles("hamil, ibu, bayi")
     }
 
+    // Menyiapkan ViewModel dengan Retrofit
     private fun setupViewModel() {
         val retrofit = Retrofit.Builder()
             .baseUrl(BuildConfig.ARTICLE_API_URL)
@@ -68,11 +76,13 @@ class HomeFragment : Fragment() {
         viewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
     }
 
+    // Menyiapkan RecyclerView untuk daftar artikel
     private fun setupRecyclerView() {
         binding.rvArticles.layoutManager = LinearLayoutManager(requireContext())
         binding.rvArticles.setHasFixedSize(true)
     }
 
+    // Mengamati data artikel dan status loading dari ViewModel
     private fun observeViewModel() {
         viewModel.articles.observe(viewLifecycleOwner) { articles ->
             if (articles != null) {
@@ -90,12 +100,12 @@ class HomeFragment : Fragment() {
         }
     }
 
+    // Memuat data pengguna dari Firestore, termasuk nama, umur, dan usia kandungan
     private fun loadData() {
         val userId = FirebaseAuth.getInstance().currentUser?.uid
         if (userId != null) {
             val userRef = db.collection("user").document(userId)
 
-            // Fetch user document
             userRef.get()
                 .addOnSuccessListener { document ->
                     if (document != null) {
@@ -103,14 +113,21 @@ class HomeFragment : Fragment() {
                         val umur = document.data?.get("umur")?.toString()
                         val usiakandungan = document.data?.get("usiakandungan")?.toString()?.toIntOrNull()
                         val lastUpdated = document.data?.get("lastUpdated")?.toString()
+                        val tanggalLahir = document.data?.get("tanggal_lahir")?.toString()
+
+                        // Perbarui umur berdasarkan ulang tahun pengguna
+                        if (!tanggalLahir.isNullOrEmpty()) {
+                            val newAge = checkAndUpdateAge(tanggalLahir, userRef)
+                            binding.tvUmur.text = "$newAge Tahun"
+                        }
 
                         if (usiakandungan != null) {
+                            // Periksa dan perbarui usia kandungan jika diperlukan
                             val updatedKandungan = checkAndUpdateKandungan(usiakandungan, lastUpdated, userRef)
-
                             binding.tvName.text = "Hi $nama"
-                            binding.tvUmur.text = "$umur Tahun"
                             binding.tvKandungan.text = "$updatedKandungan minggu kehamilan"
 
+                            // Memuat prediksi risiko terbaru
                             nama?.let { fetchLatestPrediction(it) }
                         }
                     }
@@ -119,11 +136,13 @@ class HomeFragment : Fragment() {
                     Toast.makeText(requireContext(), "Gagal mengambil data pengguna!", Toast.LENGTH_SHORT).show()
                 }
 
+            // Tombol untuk membuka chatbot
             binding.fabChatbot.setOnClickListener {
                 val intent = Intent(requireContext(), ChatbotActivity::class.java)
                 startActivity(intent)
             }
 
+            // Tombol untuk membuka aktivitas risiko
             binding.btnRisk.setOnClickListener {
                 val intent = Intent(requireContext(), RiskActivity::class.java)
                 startActivity(intent)
@@ -133,6 +152,28 @@ class HomeFragment : Fragment() {
         }
     }
 
+    // Memperbarui umur berdasarkan tanggal lahir
+    private fun checkAndUpdateAge(tanggalLahir: String, ref: DocumentReference): Int {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val birthDate = dateFormat.parse(tanggalLahir) ?: return 0
+        val today = Calendar.getInstance()
+        val birthCalendar = Calendar.getInstance().apply { time = birthDate }
+
+        var currentAge = today.get(Calendar.YEAR) - birthCalendar.get(Calendar.YEAR)
+        if (today.get(Calendar.DAY_OF_YEAR) < birthCalendar.get(Calendar.DAY_OF_YEAR)) {
+            currentAge -= 1
+        }
+
+        if (today.get(Calendar.DAY_OF_YEAR) == birthCalendar.get(Calendar.DAY_OF_YEAR)) {
+            ref.update("umur", currentAge + 1)
+                .addOnSuccessListener { Log.d("HomeFragment", "Umur diperbarui menjadi ${currentAge + 1}") }
+                .addOnFailureListener { Log.e("HomeFragment", "Gagal memperbarui umur", it) }
+        }
+
+        return currentAge
+    }
+
+    // Mengambil prediksi risiko terbaru dari server
     private fun fetchLatestPrediction(name: String) {
         ApiClient.instance.getLatestPrediction(name).enqueue(object : Callback<Map<String, Any>> {
             override fun onResponse(
@@ -145,15 +186,15 @@ class HomeFragment : Fragment() {
                     val riskCategory = data?.get("risk_category")?.toString() ?: "Unknown"
                     val predictions = data?.get("input") as? List<Float> ?: emptyList()
 
-                    // Set data ke view
+                    // Menampilkan data risiko dan prediksi
                     binding.tvResiko.text = riskCategory
                     if (predictions.size >= 6) {
-                        binding.tvHasilSuhu.text = predictions[1].toString()
-                        binding.tvHasilHeartRate.text = predictions[2].toString()
-                        binding.tvHasilSystolic.text = predictions[3].toString()
-                        binding.tvHasilDiastolic.text = predictions[4].toString()
-                        binding.tvHasilBmi.text = predictions[5].toString()
-                        binding.tvHasilGulaDarah.text = predictions[6].toString()
+                        binding.tvHasilSuhu.text = "${formatToTwoDecimal(predictions[1])} °C"
+                        binding.tvHasilHeartRate.text = "${formatToTwoDecimal(predictions[2])} bpm"
+                        binding.tvHasilSystolic.text = "${formatToTwoDecimal(predictions[3])} mmHg"
+                        binding.tvHasilDiastolic.text = "${formatToTwoDecimal(predictions[4])} mmHg"
+                        binding.tvHasilBmi.text = "${formatToTwoDecimal(predictions[5])} kg/m²" // BMI biasanya tanpa satuan
+                        binding.tvHasilGulaDarah.text = "${formatToTwoDecimal(predictions[6])} mg/dL"
                     }
                 } else {
                     Log.e("HomeFragment", "Failed to fetch prediction: ${response.errorBody()?.string()}")
@@ -176,6 +217,12 @@ class HomeFragment : Fragment() {
         })
     }
 
+    // Memformat angka desimal hingga dua angka di belakang koma
+    private fun formatToTwoDecimal(value: Float): String {
+        return String.format(Locale.getDefault(), "%.2f", value)
+    }
+
+    // Memeriksa dan memperbarui usia kandungan berdasarkan minggu berjalan
     private fun checkAndUpdateKandungan(currentKandungan: Int, lastUpdated: String?, ref: DocumentReference): Int {
         val calendar = Calendar.getInstance()
         val today = calendar.time
@@ -204,18 +251,16 @@ class HomeFragment : Fragment() {
         return currentKandungan
     }
 
-    private fun isNewWeek(lastUpdatedDate: Date, today: Date): Boolean {
+    // Memeriksa apakah minggu baru telah dimulai
+    private fun isNewWeek(lastUpdated: Date, today: Date): Boolean {
         val calendar = Calendar.getInstance()
-
-        calendar.time = lastUpdatedDate
-        calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
-        val lastMonday = calendar.time
+        calendar.time = lastUpdated
+        val lastUpdatedWeek = calendar.get(Calendar.WEEK_OF_YEAR)
 
         calendar.time = today
-        calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
-        val thisMonday = calendar.time
+        val currentWeek = calendar.get(Calendar.WEEK_OF_YEAR)
 
-        return lastMonday.before(thisMonday)
+        return currentWeek != lastUpdatedWeek
     }
 
     override fun onResume() {
