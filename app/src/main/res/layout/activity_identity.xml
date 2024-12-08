@@ -54,7 +54,7 @@
                 android:id="@+id/tvDateOfBirth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Tanggal Lahir (ex : 2004-08-15"
+                android:hint="Tanggal Lahir (ex : 2004-08-15)"
                 android:inputType="date"
                 android:layout_marginTop="16dp" />
 
