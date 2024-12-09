@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="#F8F8F8">
 
+    <!-- Scrollable Content -->
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -50,15 +51,20 @@
                 android:inputType="number"
                 android:layout_marginTop="16dp" />
 
-            <TextView
-                android:id="@+id/tvDateOfBirth"
+            <!-- Date of Birth Field -->
+            <EditText
+                android:id="@+id/etDateOfBirth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="12dp"
                 android:hint="Tanggal Lahir"
                 android:textSize="16sp"
                 android:gravity="center_vertical"
-                android:layout_marginBottom="16dp" />
+                android:focusable="false"
+                android:clickable="true"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:inputType="none" />
+
 
             <!-- Gestational Age Field -->
             <EditText
