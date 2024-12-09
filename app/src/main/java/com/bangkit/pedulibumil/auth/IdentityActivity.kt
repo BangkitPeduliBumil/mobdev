@@ -8,7 +8,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.bangkit.pedulibumil.MainActivity
 import com.bangkit.pedulibumil.R
 import com.google.firebase.auth.FirebaseAuth
@@ -25,6 +27,7 @@ class IdentityActivity : AppCompatActivity() {
     private lateinit var etKandungan: EditText
     private lateinit var btnSubmit: Button
 
+    private val viewModel: IdentityViewModel by viewModels()
     private var db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,18 +40,39 @@ class IdentityActivity : AppCompatActivity() {
         etKandungan = findViewById(R.id.etKandungan)
         btnSubmit = findViewById(R.id.btnSubmit)
 
+        // Pantau apakah data sudah dikirimkan
+        viewModel.isDataSubmitted.observe(this, Observer { isSubmitted ->
+            if (isSubmitted) {
+                navigateToMainActivity()
+            }
+        })
+
+        // Atur ulang data jika sudah disimpan di ViewModel
+        viewModel.name.observe(this) { name ->
+            if (name != null) etName.setText(name)
+        }
+
+        viewModel.dateOfBirth.observe(this) { dateOfBirth ->
+            if (dateOfBirth != null) tvDateOfBirth.text = dateOfBirth
+        }
+
+        viewModel.pregnancyAge.observe(this) { pregnancyAge ->
+            if (pregnancyAge != null) etKandungan.setText(pregnancyAge)
+        }
+
         // Tampilkan DatePicker saat tanggal lahir diklik
         tvDateOfBirth.setOnClickListener {
             val calendar = Calendar.getInstance()
             DatePickerDialog(this, { _, year, month, dayOfMonth ->
                 val selectedDate = "$year-${month + 1}-$dayOfMonth"
                 tvDateOfBirth.text = selectedDate
+                viewModel.setDateOfBirth(selectedDate)
             }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show()
         }
 
         btnSubmit.setOnClickListener {
             val sName = etName.text.toString().trim()
-            val sDateOfBirth =  tvDateOfBirth.text.toString().trim()
+            val sDateOfBirth = tvDateOfBirth.text.toString().trim()
             val sKandungan = etKandungan.text.toString().trim()
 
             if (sName.isEmpty()) {
@@ -63,6 +87,10 @@ class IdentityActivity : AppCompatActivity() {
                 Toast.makeText(this, "Usia kandungan tidak boleh kosong", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+
+            viewModel.setName(sName)
+            viewModel.setDateOfBirth(sDateOfBirth)
+            viewModel.setPregnancyAge(sKandungan)
 
             val age = calculateAge(sDateOfBirth)
 
@@ -82,15 +110,19 @@ class IdentityActivity : AppCompatActivity() {
             db.collection("user").document(userId).set(userMap)
                 .addOnSuccessListener {
                     Toast.makeText(this, "Data berhasil disimpan", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
+                    viewModel.markDataAsSubmitted()
                 }
                 .addOnFailureListener { e ->
                     Log.e("Identity", "Error saving data", e)
                     Toast.makeText(this, "Gagal menyimpan data", Toast.LENGTH_SHORT).show()
                 }
         }
+    }
+
+    private fun navigateToMainActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun calculateAge(dateOfBirth: String): Int {
