@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -49,23 +48,13 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Memuat data pengguna dari Firestore
         loadData()
-
-        // Menyiapkan ViewModel untuk artikel
         setupViewModel()
-
-        // Menyiapkan RecyclerView untuk daftar artikel
         setupRecyclerView()
-
-        // Mengamati perubahan data dari ViewModel
         observeViewModel()
-
-        // Memulai pengambilan artikel dengan kata kunci tertentu
         viewModel.fetchArticles("hamil, ibu, bayi")
     }
 
-    // Menyiapkan ViewModel dengan Retrofit
     private fun setupViewModel() {
         val retrofit = Retrofit.Builder()
             .baseUrl(BuildConfig.ARTICLE_API_URL)
@@ -76,13 +65,11 @@ class HomeFragment : Fragment() {
         viewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
     }
 
-    // Menyiapkan RecyclerView untuk daftar artikel
     private fun setupRecyclerView() {
         binding.rvArticles.layoutManager = LinearLayoutManager(requireContext())
         binding.rvArticles.setHasFixedSize(true)
     }
 
-    // Mengamati data artikel dan status loading dari ViewModel
     private fun observeViewModel() {
         viewModel.articles.observe(viewLifecycleOwner) { articles ->
             if (articles != null) {
@@ -100,7 +87,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-    // Memuat data pengguna dari Firestore, termasuk nama, umur, dan usia kandungan
     private fun loadData() {
         val userId = FirebaseAuth.getInstance().currentUser?.uid
         if (userId != null) {
@@ -115,40 +101,34 @@ class HomeFragment : Fragment() {
                         val lastUpdated = document.data?.get("lastUpdated")?.toString()
                         val tanggalLahir = document.data?.get("tanggal_lahir")?.toString()
 
-                        // Perbarui umur berdasarkan ulang tahun pengguna
                         if (!tanggalLahir.isNullOrEmpty()) {
                             val newAge = checkAndUpdateAge(tanggalLahir, userRef)
                             binding.tvUmur.text = "$newAge Tahun"
                         }
 
                         if (usiakandungan != null) {
-                            // Periksa dan perbarui usia kandungan jika diperlukan
                             val updatedKandungan = checkAndUpdateKandungan(usiakandungan, lastUpdated, userRef)
                             binding.tvName.text = "Hi $nama"
                             binding.tvKandungan.text = "$updatedKandungan minggu kehamilan"
-
-                            // Memuat prediksi risiko terbaru
                             nama?.let { fetchLatestPrediction(it) }
                         }
                     }
                 }
                 .addOnFailureListener {
-                    Toast.makeText(requireContext(), "Gagal mengambil data pengguna!", Toast.LENGTH_SHORT).show()
+                    Log.e("HomeFragment", "Gagal mengambil data pengguna", it)
                 }
 
-            // Tombol untuk membuka chatbot
             binding.fabChatbot.setOnClickListener {
                 val intent = Intent(requireContext(), ChatbotActivity::class.java)
                 startActivity(intent)
             }
 
-            // Tombol untuk membuka aktivitas risiko
             binding.btnRisk.setOnClickListener {
                 val intent = Intent(requireContext(), RiskActivity::class.java)
                 startActivity(intent)
             }
         } else {
-            Toast.makeText(requireContext(), "Pengguna tidak masuk", Toast.LENGTH_SHORT).show()
+            Log.e("HomeFragment", "Pengguna tidak masuk")
         }
     }
 
@@ -163,21 +143,15 @@ class HomeFragment : Fragment() {
             currentAge -= 1
         }
 
-        // Update age only if it's the user's birthday
         if (today.get(Calendar.DAY_OF_YEAR) == birthCalendar.get(Calendar.DAY_OF_YEAR)) {
-            val newAge = currentAge + 1 // Increment the age by 1
-            ref.update("umur", newAge)
-                .addOnSuccessListener { Log.d("HomeFragment", "Umur diperbarui menjadi $newAge") }
+            ref.update("umur", currentAge + 1)
+                .addOnSuccessListener { Log.d("HomeFragment", "Umur diperbarui menjadi ${currentAge}") }
                 .addOnFailureListener { Log.e("HomeFragment", "Gagal memperbarui umur", it) }
-            return newAge
         }
 
         return currentAge
     }
 
-
-
-    // Mengambil prediksi risiko terbaru dari server
     private fun fetchLatestPrediction(name: String) {
         ApiClient.instance.getLatestPrediction(name).enqueue(object : Callback<Map<String, Any>> {
             override fun onResponse(
@@ -190,65 +164,42 @@ class HomeFragment : Fragment() {
                     val riskCategory = data?.get("risk_category")?.toString() ?: "Unknown"
                     val predictions = data?.get("input") as? List<Float> ?: emptyList()
 
-                    // Menampilkan data risiko dan prediksi
                     binding.tvResiko.text = riskCategory
                     if (predictions.size >= 6) {
                         binding.tvHasilSuhu.text = "${formatToTwoDecimal(predictions[1])} °C"
                         binding.tvHasilHeartRate.text = "${formatToTwoDecimal(predictions[2])} bpm"
                         binding.tvHasilSystolic.text = "${formatToTwoDecimal(predictions[3])} mmHg"
                         binding.tvHasilDiastolic.text = "${formatToTwoDecimal(predictions[4])} mmHg"
-                        binding.tvHasilBmi.text = "${formatToTwoDecimal(predictions[5])} kg/m²" // BMI biasanya tanpa satuan
+                        binding.tvHasilBmi.text = "${formatToTwoDecimal(predictions[5])} kg/m²"
                         binding.tvHasilGulaDarah.text = "${formatToTwoDecimal(predictions[6])} mg/dL"
                     }
                 } else {
-                    Log.e("HomeFragment", "Failed to fetch prediction: ${response.errorBody()?.string()}")
-                    Toast.makeText(
-                        requireContext(),
-                        "Failed to fetch latest prediction!",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Log.e("HomeFragment", "Failed to fetch prediction")
                 }
             }
 
             override fun onFailure(call: Call<Map<String, Any>>, t: Throwable) {
                 Log.e("HomeFragment", "Error fetching prediction", t)
-                Toast.makeText(
-                    requireContext(),
-                    "Error fetching prediction: ${t.message}",
-                    Toast.LENGTH_SHORT
-                ).show()
             }
         })
     }
 
-    // Memformat angka desimal hingga dua angka di belakang koma
     private fun formatToTwoDecimal(value: Float): String {
         return String.format(Locale.getDefault(), "%.2f", value)
     }
 
-    // Memeriksa dan memperbarui usia kandungan berdasarkan minggu berjalan
     private fun checkAndUpdateKandungan(currentKandungan: Int, lastUpdated: String?, ref: DocumentReference): Int {
         val calendar = Calendar.getInstance()
         val today = calendar.time
         val dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
 
         if (dayOfWeek != Calendar.MONDAY) return currentKandungan
-
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         val lastUpdatedDate = lastUpdated?.let { dateFormat.parse(it) }
 
         if (lastUpdatedDate == null || isNewWeek(lastUpdatedDate, today)) {
             val newKandungan = currentKandungan + 1
-
-            ref.update(mapOf(
-                "usiakandungan" to newKandungan,
-                "lastUpdated" to dateFormat.format(today)
-            )).addOnSuccessListener {
-                Log.d("HomeFragment", "Usia kandungan updated to $newKandungan")
-            }.addOnFailureListener {
-                Log.e("HomeFragment", "Failed to update usia kandungan", it)
-            }
-
+            ref.update(mapOf("usiakandungan" to newKandungan))
             return newKandungan
         }
 
