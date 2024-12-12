@@ -35,7 +35,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvAppNamee" />
 
-        <!-- Email Input -->
         <EditText
             android:id="@+id/etEmail"
             android:layout_width="0dp"
@@ -46,15 +45,26 @@
             android:drawablePadding="12dp"
             android:hint="@string/hint_email"
             android:padding="12dp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imgProfileIcon"
             app:layout_constraintWidth_percent="0.8" />
 
+        <LinearLayout
+            android:id="@+id/llPasswordContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etEmail"
+            app:layout_constraintWidth_percent="0.8">
+
         <!-- Password Input -->
         <com.bangkit.pedulibumil.util.CustomEditText
             android:id="@+id/etPassword"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:background="@drawable/bg_input_field"
@@ -63,10 +73,8 @@
             android:hint="@string/hint_password"
             android:inputType="textPassword"
             android:padding="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etEmail"
-            app:layout_constraintWidth_percent="0.8" />
+            android:textSize="14sp" />
+        </LinearLayout>
 
         <!-- Register Button -->
         <Button
@@ -80,7 +88,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etPassword"
+            app:layout_constraintTop_toBottomOf="@id/llPasswordContainer"
             app:layout_constraintWidth_percent="0.8" />
 
         <!-- Separator -->

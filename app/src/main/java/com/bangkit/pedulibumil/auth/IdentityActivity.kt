@@ -36,7 +36,7 @@ class IdentityActivity : AppCompatActivity() {
 
         // Inisialisasi komponen UI
         etName = findViewById(R.id.etName)
-        tvDateOfBirth = findViewById(R.id.tvDateOfBirth)
+        tvDateOfBirth = findViewById(R.id.etDateOfBirth)
         etKandungan = findViewById(R.id.etKandungan)
         btnSubmit = findViewById(R.id.btnSubmit)
 
